@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Pengfei Shen  -resume</title>
+    <style>
+        @font-face {
+            font-family:Zpix !important;
+            src:url(./Zpix.ttf);
+        }
+
+        body {
+            image-rendering: -moz-crisp-edges;
+            image-rendering: -o-crisp-edges;
+            image-rendering: -webkit-optimize-contrast;
+            -ms-interpolation-mode: nearest-neighbor;
+            image-rendering: pixelated;
+            font-family: Zpix, sans-serif;
+        }
+
+        #select-lang{
+            text-align: right;
+        }
+
+        .main {
+            max-width: 700px;
+            margin: 24px auto;
+            border: 24px solid transparent;
+            border-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAABdklEQVR4nO2bsWrCUBhGvwTfx8Gtwh3El3DR1ygUFEtL+xq6ZC8di8MFKxQcfKJ28VZzm0jokENu/jMFE+F8Z8iUm+nM0/LlWz3BTccr59yjJGXSZfzD+p70aoXn1aukS4Tseny4OZsvVGw3pT/O5ouWVf9PlXv47fraTceHgVQ9vkuDY2L3sKfYblRsNxqOJjodd5KkPP5j18dXcWtX3uShFKjb9xsg5fGBqndbXvNsb7AAtABN6SXYB2pfgn3FAtACNBaAFqCxALQAjQWgBWgsAC1AYwFoARoLQAvQWABagMYC0AI0FoAWoLEAtACNBaAFaCwALUBjAWgBGgtAC9BYAFqAxgLQAjQWgBagsQC0AI0FoAVoLEC4iD8jTxX7XD7CAtACNH/ODKVMozNDqUao25c3eajr3No1kKT3t6/SwcKUT44OR5PSvcx7v/Qf+3V8I2VOx53cdHxwzt1lkhQi0GJtEcZL59PjkuS9/+SU2iWMl6Qf/NuQSdAjCQEAAAAASUVORK5CYII=) stretch;
+            border-image-slice: 12;
+            background: #dddce6;
+            -webkit-background-clip: padding;
+            background-clip: padding-box;
+        }
+
+        section {
+            padding: 10px;
+            color: #444;
+        }
+
+        .profile li{
+            list-style-type: none
+        }
+
+        a {
+            color: #23213d;
+            text-decoration: none;
+        }
+
+        .header {
+            margin: 0 auto;
+            color: #23213d;
+            text-align: center;
+        }
+
+        .values {
+            color: #23213d;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <p id='select-lang'><a href="#EN" onclick="toggle('en')">English</a> | <a href="#CH" onclick="toggle('ch')">中文</a></p>
+    <div class="main" id="en">
+        <section class="header">
+            <h2>Pengfei Shen</h2>
+        </section>
+        <section class="profile">
+            <h3>Profile</h3>
+            <ul>
+                <li>
+                    <p>Phone Number: <span class="values">15503624843<span></p>
+                </li>
+                <li>
+                    <p>Email: <span class="values"><a href="mailto:spf@arthas.me">spf@arthas.me</a></span></p>
+                </li>
+                <li>
+                    <p>Website: <span class="values"><a href="https://arthas.me">https://arthas.me</a></span></p>
+                </li>
+                <li>
+                    <p>Github: <span class="values"><a href="https://github.com/Deadalusmask">https://github.com/Deadalusmask</a></span></p>
+                </li>
+                <li>
+                    <p>Birthday: <span class="values">1997/4</span></p>
+                </li>
+            </ul>
+        </section>
+        <section class="education">
+            <h3>Education</h3>
+            <ul>
+                <li>
+                    <span class="values">Sep,2015 - Now  Taiyuan University of Technology, B.Eng.</span>
+                    <p>Software College, Software Engineering</p>
+                </li>
+            </ul>
+        </section>
+        <section class="skills">
+            <h3>Skills & Interests</h3>
+            <ul>
+                <li>
+                    <span class="values">PHP</span>
+                    <p>Proficient in PHP serverside developing, skilled in backend developing with Laravel framework;</p>
+                </li>
+                <li>
+                    <span class="values">Python</span>
+                    <p>Skilled in RESTful/GraphQL style API coding in Python, simple scripts writing, knowledge and experience in Scrapy, OpenCV and TensorFlow;</p>
+                </li>
+                <li>
+                    <span class="values">Linux</span>
+                    <p>Familiar with Debian / Archlinux server environment seting up and service deploying, raspberry pie based smart home, Docker;</p>
+                </li>
+                <li>
+                    <span class="values">JavaScript</span>
+                    <p>Familiar with the usage of Node.js, basic use of Vue.js and React.js, connecting to API efficiently;</p>
+                </li>
+                <li>
+                    <span class="values">Painting</span>
+                    <p>Amateur in painting, learnt some sketch drawing basis, Familiar with modeling and rendering in Blender, scripting and making some game effects in Unity，retro pixel art fan.</p>
+                </li>
+            </ul>
+        </section>
+        <section class="projects">
+            <h3>Projects</h3>
+            <ul>
+                <li>
+                    <span class="values">太原理工大学学生处</span>
+                    <p>Website for Student Office in TYUT，implemented features of main page management, section management, article management, file-resource upload and management. this project is using Laravel framework.</p>
+                </li>
+                <li>
+                    <span class="values">Image-classify</span>
+                    <p>An app provides dataset for image-recognition. collecting data by volunteer tagging a image. primary works at serversid.</p>
+                </li>
+                <li>
+                    <span class="values">Labbs/Ablog</span>
+                    <p>A bbs and a blog system with Vue.js-PWA frontend and Django-REST-framework backend.</p>
+                </li>
+            </ul>
+        </section>
+    </div>
+    <div class="main" id="ch">
+        <section class="header">
+            <h2>申鹏飞</h2>
+        </section>
+        <section class="profile">
+            <h3>个人资料</h3>
+            <ul>
+                <li>
+                    <p>联系电话： <span class="values">15503624843<span></p>
+                </li>
+                <li>
+                    <p>电子邮箱： <span class="values"><a href="mailto:spf@arthas.me">spf@arthas.me</a></span></p>
+                </li>
+                <li>
+                    <p>个人网站： <span class="values"><a href="https://arthas.me">https://arthas.me</a></span></p>
+                </li>
+                <li>
+                    <p>Github： <span class="values"><a href="https://github.com/Deadalusmask">https://github.com/Deadalusmask</a></span></p>
+                </li>
+                <li>
+                    <p>出生年月： <span class="values">1997/4</span></p>
+                </li>
+            </ul>
+        </section>
+        <section class="education">
+            <h3>教育背景</h3>
+            <ul>
+                <li>
+                    <span class="values">2015年9月至今 太原理工大学</span>
+                    <p>软件学院 软件工程专业</p>
+                </li>
+            </ul>
+        </section>
+        <section class="skills">
+            <h3>专业技能</h3>
+            <ul>
+                <li>
+                    <span class="values">PHP</span>
+                    <p>熟悉PHP服务端开发，遵守PSR规范，熟练使用php流行框架Laravel进行web后台开发；</p>
+                </li>
+                <li>
+                    <span class="values">Python</span>
+                    <p>熟悉使用Python开发RESTful/GraphQL格式的接口、日常脚本的编写、Scrapy爬虫入门、OpenCV、TensorFlow编写神经网络入门；</p>
+                </li>
+                <li>
+                    <span class="values">Linux</span>
+                    <p>熟悉 Debian / Archlinux 服务器的环境搭建和服务部署，基于树莓派的智能家居, Docker；</p>
+                </li>
+                <li>
+                    <span class="values">JavaScript</span>
+                    <p>Node.js的使用，Vue.js和React.js等前端框架的基本应用，能高效对接接口；</p>
+                </li>
+                <li>
+                    <span class="values">Painting</span>
+                    <p>业余兴趣是美术，有一些素描基础，熟悉使用Blender进行建模和渲染、使用Unity实现一些游戏效果，像素风爱好者。</p>
+                </li>
+            </ul>
+        </section>
+        <section class="projects">
+            <h3>项目经验</h3>
+            <ul>
+                <li>
+                    <span class="values">太原理工大学学生处</span>
+                    <p>太原理工大学学生处的工作网站，实现后台主页管理、栏目管理、文章管理、上传文件资源管理等功能，使用Laravel框架开发。</p>
+                </li>
+                <li>
+                    <span class="values">Image-classify</span>
+                    <p>为图片识别提供数据的应用，通过志愿者给图片打标签的方式收集数据。主要完成其服务端开发。</p>
+                </li>
+                <li>
+                    <span class="values">Labbs/Ablog</span>
+                    <p>分别为一个用Laravel开发的论坛和一个前后端分离的博客系统，前端使用Vue.js-PWA，后端使用Django-REST-framework。</p>
+                </li>
+            </ul>
+        </section>
+    </div>
+    <script>
+        document.getElementById('ch').style.display = 'none';
+        function toggle(id){
+            if(id=='en'){
+                document.getElementById('en').style.display = 'block';
+                document.getElementById('ch').style.display = 'none';
+            }else{
+                document.getElementById('en').style.display = 'none';
+                document.getElementById('ch').style.display = 'block';
+            }
+
+        }
+    </script>
+</body>
+</html>
