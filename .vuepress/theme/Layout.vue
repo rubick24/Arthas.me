@@ -14,12 +14,15 @@
     </div>
     <Home v-else-if="$page.frontmatter.home"/>
     <Post v-else-if="$page.frontmatter.title" :sidebar-items="sidebarItems">
+      <slot name="page-top" slot="top"/>
+      <slot name="page-bottom" slot="bottom"/>
     </Post>
     <Page v-else :sidebar-items="sidebarItems">
+      <slot name="page-top" slot="top"/>
+      <slot name="page-bottom" slot="bottom"/>
     </Page>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css">
   </div>
-
 </template>
 
 <script>
@@ -34,7 +37,7 @@ import { resolveSidebarItems } from './util'
 import Post from './Post.vue'
 
 export default {
-  components: { Home, Page, Sidebar, Navbar, Post},
+  components: { Home, Page, Sidebar, Navbar, Post },
   data () {
     return {
       isSidebarOpen: false
@@ -45,11 +48,7 @@ export default {
     shouldShowNavbar () {
       const { themeConfig } = this.$site
       const { frontmatter } = this.$page
-      if (
-        frontmatter.navbar === false ||
-        themeConfig.navbar === false) {
-        return false
-      }
+      if (frontmatter.navbar === false) return false
       return (
         this.$title ||
         themeConfig.logo ||
@@ -59,6 +58,7 @@ export default {
       )
     },
     shouldShowSidebar () {
+      const { themeConfig } = this.$site
       const { frontmatter } = this.$page
       return (
         !frontmatter.layout &&
@@ -75,13 +75,13 @@ export default {
         this.$localePath
       )
     },
-    pageClasses () {
+    pageClasses() {
       const userPageClass = this.$page.frontmatter.pageClass
       return [
         {
           'no-navbar': !this.shouldShowNavbar,
           'sidebar-open': this.isSidebarOpen,
-          'no-sidebar': !this.shouldShowSidebar
+          'no-sidebar': !this.shouldShowSidebar,
         },
         userPageClass
       ]
@@ -94,6 +94,7 @@ export default {
       this.$ssrContext.lang = this.$lang
       this.$ssrContext.description = this.$page.description || this.$description
     }
+
   },
 
   mounted () {

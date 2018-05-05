@@ -9,11 +9,9 @@
     "build": "vuepress build"
   },
   "dependencies": {
-    "markdown-it-katex": "^2.0.3"
-  },
-  "devDependencies": {
     "glob": "^7.1.2",
     "moment": "^2.22.1",
-    "vuepress": "^0.8.4"
+    "vuepress": "^0.8.4",
+    "markdown-it-katex": "^2.0.3"
   }
 }

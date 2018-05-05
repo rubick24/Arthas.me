@@ -9,11 +9,10 @@
       <p class="action" v-if="data.actionText && data.actionLink">
         <NavLink class="action-button" :item="actionLink"/>
       </p>
-
     </div>
     <div class="features" v-if="data.features && data.features.length">
       <div class="feature" v-for="feature in data.features">
-        <h2><a :href="feature.link?feature.link:'#'" target="_blank">{{ feature.title }}</a></h2>
+        <h2>{{ feature.title }}</h2>
         <p>{{ feature.details }}</p>
       </div>
     </div>
@@ -56,7 +55,6 @@ export default {
       max-height 280px
       display block
       margin 3rem auto 1.5rem
-      border-radius 10%
     h1
       font-size 3rem
     h1, .description, .action

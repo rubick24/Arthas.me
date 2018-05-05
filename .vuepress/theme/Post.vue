@@ -39,7 +39,7 @@ export default {
   props: ['sidebarItems'],
   computed: {
     pub_time () {
-      return moment(this.$page.frontmatter.date).format("MMM Do YY")
+      return moment(this.$page.frontmatter.date).format("MMM Do YYYY")
     },
     prev () {
       const prev = this.$page.frontmatter.prev
@@ -134,7 +134,8 @@ function find (page, items, offset) {
 .post-header
   max-width: 740px;
   margin: 0 auto;
-  padding: 6rem 2.5rem 0 2.5rem;
+  margin-top: $navbarHeight;
+  padding: 2rem 2.5rem 0 2.5rem;
   p
     text-align right
 

@@ -12,15 +12,12 @@ module.exports = {
   },
   themeConfig: {
     nav: [
-      {
-        text: 'Blog',
-        link: '/posts/',
-      }
+      { text: 'Blog', link: '/posts/' },
+      { text: 'About', link: '/about/'}
     ],
     sidebar: [
       'posts/',
-      ...generateBlogSideBar('/posts'),
-
+      ...generateBlogSideBar('/posts')
     ],
     sidebarDepth: 0
   }

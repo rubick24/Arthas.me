@@ -9,7 +9,7 @@
 
 <script>
 export default {
-  name: 'DropdownTransition',
+  name: 'SidebarGroup',
   methods: {
     setHeight (items) {
       // explicitly set height so that it can be transitioned
