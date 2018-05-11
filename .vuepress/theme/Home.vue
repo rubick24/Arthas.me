@@ -12,7 +12,7 @@
     </div>
     <div class="features" v-if="data.features && data.features.length">
       <div class="feature" v-for="feature in data.features">
-        <h2>{{ feature.title }}</h2>
+        <h2><a :href="feature.link" target="_blank">{{ feature.title }}</a></h2>
         <p>{{ feature.details }}</p>
       </div>
     </div>
@@ -55,6 +55,7 @@ export default {
       max-height 280px
       display block
       margin 3rem auto 1.5rem
+      border-radius 1rem
     h1
       font-size 3rem
     h1, .description, .action
