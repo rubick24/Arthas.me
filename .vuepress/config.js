@@ -1,4 +1,4 @@
-const {generateBlogSideBar} = require('./util')
+const { generateBlogSideBar } = require('./util')
 
 module.exports = {
   title: 'Arthas.me',
@@ -13,7 +13,7 @@ module.exports = {
   themeConfig: {
     nav: [
       { text: 'Blog', link: '/posts/' },
-      { text: 'About', link: '/about/'}
+      { text: 'About', link: '/about/' }
     ],
     sidebar: [
       'posts/',

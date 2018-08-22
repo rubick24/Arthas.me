@@ -25,7 +25,7 @@ import fShader from './shaders/texture.fs'
 
 找到了[glslify](http://stack.gl/packages/#stackgl/glslify), 但因为它的维护不活跃了，所以没有使用。
 
-## Shader 1 Static Color
+## 1 Static Color
 vertex Shader
 ``` glsl
 void main() {
@@ -42,7 +42,7 @@ void main() {
 }
 ```
 
-## Shader 2 Normal
+## 2 Normal
 vertex Shader
 ``` glsl
 varying vec3 transformedNormal;
@@ -62,7 +62,7 @@ void main(void)
 }
 ```
 
-## Shader 3 Texture
+## 3 Texture
 vertex Shader
 ``` glsl
 varying vec2 vUv;
@@ -84,7 +84,7 @@ void main() {
 ```
 
 
-## Shader 4 Texture with static directional light
+## 4 Texture with static directional light
 vertex Shader
 ``` glsl
 varying vec3 vNormal;
@@ -116,7 +116,7 @@ void main() {
 }
 ```
 
-## Shader 5 Texture with point lights in scene
+## 5 Texture with point lights in scene
 
 js
 ``` js

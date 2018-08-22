@@ -1,5 +1,5 @@
 const { join, basename, relative } = require('path');
-const moment = require('moment');
+// const moment = require('moment');
 const glob = require('glob');
 const { readFileSync } = require('fs');
 
@@ -44,13 +44,13 @@ const generateBlogSideBar = dir => {
     let res = [];
     files.forEach(x => {
       let year = x.date.getFullYear()
-      if (years.includes(year)){
-        res[years.indexOf(year)].children.push([x.file.slice(0,-2)+'html',x.title])
+      if (years.includes(year)) {
+        res[years.indexOf(year)].children.push([x.file.slice(0, -2) + 'html', x.title])
       } else {
         years.push(year)
         res.push({
           title: year,
-          children: [ [x.file.slice(0,-2)+'html',x.title] ]
+          children: [[x.file.slice(0, -2) + 'html', x.title]]
         })
       }
     });
