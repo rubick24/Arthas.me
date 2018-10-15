@@ -19,7 +19,6 @@ tags:
 function Ray(position, direction) {
   this.position = position
   this.direction = direction
-  return this
 }
 ```
 
@@ -136,4 +135,6 @@ for (let i = 0; i < len; i += 3) {
 
 ## 完整代码
 
-[Deadalusmask/ArGL/examples/click_test](https://github.com/Deadalusmask/ArGL/tree/master/examples/click_test)
+[Deadalusmask/ArGL/examples/pick_test](https://github.com/Deadalusmask/ArGL/tree/master/examples/pick_test)
+
+[DEMO](https://arthas.me/demo/ray-casting/index.html)

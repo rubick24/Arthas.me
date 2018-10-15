@@ -1,17 +1,7 @@
-const { join, basename, relative } = require('path');
-// const moment = require('moment');
+const { join, basename } = require('path');
 const glob = require('glob');
 const { readFileSync } = require('fs');
-
-const { inferTitle, extractHeaders, parseFrontmatter } = require('vuepress/lib/util')
-
-const readTitleFromMd = path => {
-  const lines = readFileSync(path, 'utf8').split('\n').map(l => l.trim());
-  const headerLine = lines.find(l => /^#[^#].*$/.test(l));
-  const match = headerLine.match(/^#(.*)/);
-  if (!match) return;
-  return match[1].trim();
-};
+const { parseFrontmatter } = require('@vuepress/shared-utils')
 
 const generateBlogSideBar = dir => {
 
@@ -59,7 +49,6 @@ const generateBlogSideBar = dir => {
 
   return groupByYear(files)
 };
-
 
 //const posts = generateBlogSideBar('/posts')
 //console.log(posts[0].children[0])

@@ -11,7 +11,7 @@ tags:
 
 使用 <kbd>←</kbd> 和 <kbd>→</kbd> 控制移动，<kbd>space</kbd> 跳跃，可以二段跳。
 
-[Demo](/demo/play/index.html)
+[Demo](https://arthas.me/demo/play/index.html)
 
 Github项目地址：[Deadalusmask/Play](https://github.com/Deadalusmask/Play)
 

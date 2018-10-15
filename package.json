@@ -1,17 +1,15 @@
 {
-  "name": "vpblog",
+  "name": "Arthas.me",
   "version": "1.0.0",
   "main": "index.js",
-  "author": "申鹏飞",
   "license": "MIT",
   "scripts": {
     "dev": "vuepress dev",
     "build": "vuepress build"
   },
+  "devDependencies": {},
   "dependencies": {
-    "glob": "^7.1.2",
-    "moment": "^2.22.1",
-    "vuepress": "^0.8.4",
-    "markdown-it-katex": "^2.0.3"
+    "markdown-it-katex": "^2.0.3",
+    "vuepress": "^1.0.0-alpha.10"
   }
 }
