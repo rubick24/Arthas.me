@@ -5,5 +5,17 @@
  */
 
 module.exports = {
-  /* Your site config here */
+  plugins: [
+    `gatsby-plugin-styled-components`,
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `src`,
+        path: `${__dirname}/src/posts/`,
+      },
+    },
+    `gatsby-transformer-remark`
+  ],
+
+  siteMetadata: {}
 }
