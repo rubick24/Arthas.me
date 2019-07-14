@@ -1,9 +1,8 @@
-import React from "react"
-import { graphql, Link } from "gatsby"
+import React from 'react'
+import { graphql, Link } from 'gatsby'
 import Layout from '../components/layout'
 
 export default ({ data }) => {
-  console.log(data)
   return (
     <Layout>
       <div>posts</div>
