@@ -20,18 +20,24 @@ useGlobalState.ts
 ```ts
 import { useState, useEffect, Dispatch, SetStateAction } from 'react'
 
+type id<T> = (a: T) => T
+
 export default function useGlobalState<T>(initialState: T) {
   let state = initialState
   let listeners: Array<Dispatch<SetStateAction<T>>> = []
 
-  const setState = (newState: T) => {
-    state = newState
+  const setState = (newState: T | id<T>) => {
+    if (typeof newState === 'function') {
+      state = (newState as id<T>)(state)
+    } else {
+      state = newState as T
+    }
     listeners.forEach(listener => {
       listener(state)
     })
   }
 
-  const useCustom: () => [T, (state: T) => void] = () => {
+  const useCustom: () => [T, (state: T | id<T>) => void] = () => {
     const newListener = useState(initialState)[1]
     useEffect(() => {
       listeners.push(newListener)
