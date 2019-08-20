@@ -1,7 +1,16 @@
-import React from "react"
+import React from 'react'
+import { Helmet } from 'react-helmet'
 
 export default ({ children }) => {
   return (
-    <main>{children}</main>
+    <>
+      <Helmet>
+        <link
+          href="https://fonts.googleapis.com/css?family=Fira+Code|Fira+Sans|Noto+Sans+SC&display=swap"
+          rel="stylesheet"
+        />
+      </Helmet>
+      <main>{children}</main>
+    </>
   )
 }

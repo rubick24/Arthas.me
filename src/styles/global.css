@@ -1,0 +1,69 @@
+
+body {
+  margin: 0;
+  font-family: 'Fira Sans', BlinkMacSystemFont, -apple-system, 'Microsoft Yahei', 'WenQuanYi Micro Hei', 'Noto Sans SC', sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+}
+pre, code {
+  font-family: 'Fira Code', monospace;
+  font-size: 16px;
+  line-height: 1.35;
+}
+:not(pre) > code {
+  padding: 0 6px;
+  margin: 0 4px;
+  background: #FDF6E3;
+  border-radius: 4px;
+}
+a:link, a:visited, a:active {
+  color: inherit
+}
+a:hover {
+  color: #666;
+}
+
+html *::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+  background: rgba(0, 0, 0, 0);
+}
+html *::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+}
+body::-webkit-scrollbar {
+  background: rgba(0, 0, 0, 0.03);
+}
+body::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.3);
+}
+body *::selection {
+  background: rgba(0, 0, 0, 0.1);
+}
+body *::-moz-selection {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background: #333;
+    color: #d8dbd8;
+  }
+  a:hover {
+    color: #aaa;
+  }
+  :not(pre) > code {
+    padding: 0 6px;
+    margin: 0 4px;
+    background: #1E1E1E;
+    border-radius: 4px;
+  }
+
+  body *::selection {
+    background: rgba(255, 255, 255, 0.2);
+  }
+  body *::-moz-selection {
+    background: rgba(255, 255, 255, 0.2);
+  }
+}
