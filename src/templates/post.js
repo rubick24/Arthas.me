@@ -1,6 +1,6 @@
 import React from 'react'
 import { graphql, Link } from 'gatsby'
-import Layout from '../components/layout'
+import Layout from '../components/Layout'
 import styled from 'styled-components'
 
 const Hr = styled.hr`
@@ -16,11 +16,11 @@ const BottomNavSec = styled.div`
 `
 
 
-export default ({ data, pageContext }) => {
+export default ({ data, location,  pageContext }) => {
   const { previous, next } = pageContext
   const post = data.markdownRemark
   return (
-    <Layout>
+    <Layout location={location}>
       <h1>{post.frontmatter.title}</h1>
       <p>Published at {post.frontmatter.date}</p>
       <div dangerouslySetInnerHTML={{ __html: post.html }} />
