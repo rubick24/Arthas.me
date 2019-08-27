@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import CanvasLayer from './CanvasLayer'
 
 const MainContainer = styled.div`
+  padding-top: 24px;
   max-width: 980px;
   margin-left: auto;
   margin-right: auto;

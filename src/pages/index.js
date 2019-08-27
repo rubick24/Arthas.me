@@ -1,8 +1,8 @@
 import React from "react"
-import Layout from '../components/Layout'
-
-export default ({ location }) => {
-  return <Layout location={location}>
+import { Link } from 'gatsby'
+export default () => {
+  return <>
     <div>index page</div>
-  </Layout>
+    <Link to='/posts'>Posts</Link>
+  </>
 }

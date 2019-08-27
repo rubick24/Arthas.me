@@ -1,10 +1,10 @@
 import React from 'react'
 import { graphql, Link } from 'gatsby'
-import Layout from '../components/Layout'
 
-export default ({ data, location }) => {
+export default ({ data }) => {
   return (
-    <Layout location={location}>
+    <>
+      <Link to='/'>Index</Link>
       <div>posts</div>
       {data.allMarkdownRemark.edges.map(({ node }) => (
         <div key={node.id}>
@@ -13,7 +13,7 @@ export default ({ data, location }) => {
           </Link>
         </div>
       ))}
-    </Layout>
+    </>
   )
 }
 export const query = graphql`
