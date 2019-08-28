@@ -12,6 +12,8 @@
   "dependencies": {
     "babel-plugin-styled-components": "^1.10.6",
     "gatsby": "^2.13.15",
+    "gatsby-plugin-manifest": "^2.2.9",
+    "gatsby-plugin-offline": "^2.2.10",
     "gatsby-plugin-styled-components": "^3.1.1",
     "gatsby-remark-katex": "^3.1.2",
     "gatsby-remark-vscode": "^1.1.2",

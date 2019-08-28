@@ -27,6 +27,25 @@ module.exports = {
               // logLevel: 'warn'       // Set to 'warn' to debug if something looks wrong
             }
           },
+          {
+            resolve: `gatsby-plugin-manifest`,
+            options: {
+              name: `Arthas.me`,
+              short_name: `Arthas.me`,
+              start_url: `/`,
+              background_color: `#ffffff`,
+              theme_color: `#000000`,
+              display: `standalone`,
+              icon: `static/static/img/IO-l.png`,
+              legacy: false
+            },
+          },
+          {
+            resolve: `gatsby-plugin-offline`,
+            options: {
+              // 
+            }
+          }
         ]
       }
     }

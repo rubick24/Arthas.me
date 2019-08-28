@@ -8,6 +8,11 @@ const MainContainer = styled.div`
   max-width: 980px;
   margin-left: auto;
   margin-right: auto;
+
+  @media (max-width: 1028px) {
+    margin-left: 24px;
+    margin-right: 24px;
+  }
 `
 
 export default ({ children, location }) => {
