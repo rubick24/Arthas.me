@@ -11,10 +11,10 @@ pre, code {
   line-height: 1.35;
 }
 :not(pre) > code {
-  padding: 0 6px;
-  margin: 0 4px;
+  padding: 0 0.4em;
+  margin: 0 0.1em;
   background: #FDF6E3;
-  border-radius: 4px;
+  border-radius: 0.3em;
 }
 a:link, a:visited, a:active {
   color: inherit
@@ -24,13 +24,13 @@ a:hover {
 }
 
 html *::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 0.5rem;
+  height: 0.5rem;
   background: rgba(0, 0, 0, 0);
 }
 html *::-webkit-scrollbar-thumb {
   background: rgba(0, 0, 0, 0.1);
-  border-radius: 4px;
+  border-radius: 0.25rem;
 }
 body::-webkit-scrollbar {
   background: rgba(0, 0, 0, 0.03);
@@ -54,10 +54,7 @@ body *::-moz-selection {
     color: #aaa;
   }
   :not(pre) > code {
-    padding: 0 6px;
-    margin: 0 4px;
     background: #1E1E1E;
-    border-radius: 4px;
   }
 
   body *::selection {
