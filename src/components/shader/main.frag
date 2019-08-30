@@ -3,6 +3,8 @@ precision highp float;
 
 uniform float iTime;
 uniform vec2 iResolution;
+uniform vec2 iMouse;
+uniform float uAnimationStart;
 
 in vec2 fragCoord;
 out vec4 fragColor;
@@ -39,12 +41,28 @@ float snoise(vec2 v) {
     g.yz = a0.yz * x12.xz + h.yz * x12.yw;
     return 130.0 * dot(m, g);
 }
+
+float sdCircle(vec2 p, float r) {
+  return length(p) - r;
+}
+
+
 void main() {
-  vec2 uv = fragCoord.xy / iResolution.xy;
-  // vec2 p = (-iResolution.xy + 2. * (fragCoord.xy)) / iResolution.x;
-  // p = (p + 1.) / 2.;
-  float f = snoise(uv*4.)*.25+.25;
-  f += snoise(uv*4. + vec2(iTime*.0001))*.25+.25;
-  f = 1. - smoothstep(.7, .75, fract(f));
-  fragColor = vec4(vec3(f), .01);
+  vec2 uv = fragCoord / iResolution;
+  vec2 p = (-iResolution + 2. * (fragCoord)) / iResolution.y; // -1 <> 1 by height  
+  vec2 pm = (-iResolution + 2. * (vec2(iMouse.x, iResolution.y-iMouse.y))) / iResolution.y;
+
+  float ct = iTime - uAnimationStart;
+  if (ct < 500.) {
+    float a = sqrt(abs(sdCircle(p - pm, (ct/1000.))) );
+    float y = 1. - abs((1.-fract(ct/500.)) - 0.5) * 2.;
+    fragColor = vec4(vec3(a), y);
+  } else {
+    fragColor = vec4(0.);
+  }
+
+  // float f = snoise(uv*4.)*.25+.25;
+  // f += snoise(uv*4. + vec2(iTime*.0001))*.25+.25;
+  // f = 1. - smoothstep(.7, .75, fract(f));
+  // fragColor = vec4(vec3(f), .03);
 }

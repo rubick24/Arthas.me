@@ -11,7 +11,7 @@ const StyledCanvas = styled.canvas`
   z-index: 100;
 `
 
-export default ({ location }) => {
+export default ({ path }) => {
   // const [gs, setGs] = useGlobalStatus()
   const canvasRef = useRef()
   const internalStatus = useRef({
@@ -21,7 +21,7 @@ export default ({ location }) => {
   })
 
   internalStatus.current.oldPath = internalStatus.current.path
-  internalStatus.current.path = location.pathname
+  internalStatus.current.path = path
   internalStatus.current.triggerAnimation = true
   useEffect(() => {
     const canvas = canvasRef.current
@@ -54,6 +54,15 @@ export default ({ location }) => {
       canvas.clientHeight
     ])
 
+    // track mouse position for uniform
+    const handleGlobalClick = e => {
+      shader.setUniform('iMouse', 'VEC2', [
+        e.clientX,
+        e.clientY
+      ])
+    }
+    window.addEventListener('click', handleGlobalClick)
+
     gl.clearColor(0, 0, 0, 0)
     const renderLoop = time => {
       gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT)
@@ -70,8 +79,9 @@ export default ({ location }) => {
       if (s.triggerAnimation) {
         s.triggerAnimation = false
         s.ct = time
+        shader.setUniform('uAnimationStart', 'FLOAT', time)
       }
-      if (time < s.ct + 1000) {
+      if (time < s.ct + 500) {
         // animation
       }
       
@@ -80,7 +90,7 @@ export default ({ location }) => {
 
       requestAnimationFrame(renderLoop)
     }
-    renderLoop()
+    renderLoop(0)
   }, [])
 
   return <StyledCanvas ref={canvasRef} />

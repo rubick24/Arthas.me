@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState, useRef, useEffect, useMemo } from 'react'
 import { Helmet } from 'react-helmet'
 import styled from 'styled-components'
 import CanvasLayer from './CanvasLayer'
@@ -21,6 +21,7 @@ const MainContainer = styled.div`
 export default ({ children, location }) => {
   const [visiable, setVisiable] = useState(false)
   const path = useRef(location.pathname)
+  const canvasLayer = useMemo(() => <CanvasLayer path={location.pathname} />, [location.pathname])
   useEffect(() => {
     if (path.current !== location.pathname) {
       path.current = location.pathname
@@ -40,7 +41,7 @@ export default ({ children, location }) => {
           rel="stylesheet"
         />
       </Helmet>
-      <CanvasLayer location={location} />
+      {canvasLayer}
       {shouldRender ? <MainContainer>{children}</MainContainer> : null}
     </>
   )
