@@ -54,9 +54,9 @@ void main() {
 
   float ct = iTime - uAnimationStart;
   if (ct < 500.) {
-    float a = sqrt(abs(sdCircle(p - pm, (ct/1000.))) );
-    float y = 1. - abs((1.-fract(ct/500.)) - 0.5) * 2.;
-    fragColor = vec4(vec3(a), y);
+    float g = sqrt(abs(sdCircle(p - pm, 0.5 - abs(0.5 - ct/500.))));
+    float alpha = (1.-g) * (1. - abs(fract(ct/500.) - 0.5) * 2.);
+    fragColor = vec4(vec3(g), alpha);
   } else {
     fragColor = vec4(0.);
   }

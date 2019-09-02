@@ -10,7 +10,7 @@ tags:
 了解到一个叫[SpriteIlluminator](https://www.codeandweb.com/spriteilluminator)的软件，
 感觉它的 Angle Brush 功能很有用，但不需要专门购买这个软件，自己做一张法线角度图取色用也可以。
 
-![Normal Angle](/static/img/normal-angle.png)
+![Normal Angle](img/normal-angle.png)
 
 然后是突发奇想，在 HTML 里实现些像素风的 UI，所以就先从 Button 开始动手。
 考虑了用 SVG 或者 Canvas 实现，还试了下用 Canvas，但感觉不够简洁，而且因为不是标准的 Button，功能还得自己实现，所以放弃了，改用 CSS 切换图片。

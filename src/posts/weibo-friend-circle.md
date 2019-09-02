@@ -6,7 +6,7 @@ tags:
 
 [wbzz.arthas.me(微博好友圈查询)](https://wbzz.arthas.me/)
 
-![查询结果截图](/static/img/wbzz.png)
+![查询结果截图](img/wbzz.png)
 
 后端：[Deadalusmask/WBzz-api](https://github.com/Deadalusmask/WBzz-api)
 

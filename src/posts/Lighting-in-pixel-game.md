@@ -6,7 +6,7 @@ tags:
 
 通过 Pixpil 的微博了解到，Eastward 的光照效果中用到了法线贴图。
 
-![Eastward中的光照](/static/img/ew.gif)
+![Eastward中的光照](img/ew.gif)
 
 遂搜索，找到了一篇 2D 游戏照明的介绍：
 
@@ -18,21 +18,21 @@ tags:
 
 这是尝试像素 3D 光照的图片：
 
-![原图](/static/img/lighting-test.png)
+![原图](img/lighting-test.png)
 
 先根据原图画出凹凸图(Bump Map)：
 
-![Bump map](/static/img/lighting-test-grey.png)
+![Bump map](img/lighting-test-grey.png)
 
 然后在 PS 中生成法线图(PS 中生成的法线图的红色通道数值表示的法线方向似乎与 Unity 和 Blender 中是相反的，所以在生成法线图前需要先把图片水平翻转，生成后再翻转回来保存，并且生成后可能需要进行一些调整。)：
 
-![Normal map](/static/img/lighting-test-nrm.png)
+![Normal map](img/lighting-test-nrm.png)
 
 这是在 Blender 中贴上法线贴图后的效果：
 
-![res1](/static/img/res1.png)
+![res1](img/res1.png)
 
-![res2](/static/img/res2.png)
+![res2](img/res2.png)
 
 在自发光的物体方面，虽然能通过黑白的自发光强度图在 blender 中烘焙出 emit 并应用于 Unity，但发出的光不能明显的影响这张图上发光物体周围的像素，效果并不好，还需要继续研究。
 
