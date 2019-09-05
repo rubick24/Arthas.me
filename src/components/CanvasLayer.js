@@ -1,9 +1,11 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef, useMemo } from 'react'
 import styled from 'styled-components'
 // import { useGlobalStatus } from './store'
 import Shader from './shader'
 import vsSource from 'raw-loader!./shader/main.vert'
 import fsSource from 'raw-loader!./shader/main.frag'
+
+import utSource from '../assets/ut.mp3'
 
 const StyledCanvas = styled.canvas`
   position: fixed;
@@ -11,19 +13,47 @@ const StyledCanvas = styled.canvas`
   z-index: 100;
 `
 
+const PlayButton = styled.button`
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  outline: none;
+  background: none;
+  border: none;
+  padding: 0;
+  &::before {
+    content: ${props => props.playing ? '"⏸"' : '"▶️"'};
+    cursor: pointer;
+  }
+`
+
 export default ({ path }) => {
   // const [gs, setGs] = useGlobalStatus()
+  const [playing, setPlaying] = useState(false)
   const canvasRef = useRef()
   const internalStatus = useRef({
     oldPath: '',
     path: '',
-    t: 0
+    audio: null
   })
-
-  internalStatus.current.oldPath = internalStatus.current.path
-  internalStatus.current.path = path
-  internalStatus.current.triggerAnimation = true
+  if (internalStatus.current.path !== path) {
+    internalStatus.current.oldPath = internalStatus.current.path
+    internalStatus.current.path = path
+    internalStatus.current.triggerAnimation = true
+  }
   useEffect(() => {
+    const audio = document.createElement('audio')
+    audio.src = utSource
+    // audio.style.display = 'none'
+    // document.body.appendChild(audio)
+    internalStatus.current.audio = audio
+    // audio.play().then(() => {
+    //   // internalStatus.current.playing = true
+    //   setPlaying(true)
+    // }).catch(e => {
+    //   console.error(e, e.message)
+    // })
+
     const canvas = canvasRef.current
     if (!canvas) {
       return
@@ -69,6 +99,10 @@ export default ({ path }) => {
       if (window.innerHeight !== canvas.height || window.innerWidth !== canvas.width) {
         canvas.height = window.innerHeight
         canvas.width = window.innerWidth
+        shader.setUniform('iResolution', 'VEC2', [
+          canvas.clientWidth,
+          canvas.clientHeight
+        ])
         gl.viewport(0, 0, canvas.width, canvas.height)
       }
       shader.use()
@@ -78,11 +112,7 @@ export default ({ path }) => {
       
       if (s.triggerAnimation) {
         s.triggerAnimation = false
-        s.ct = time
         shader.setUniform('uAnimationStart', 'FLOAT', time)
-      }
-      if (time < s.ct + 500) {
-        // animation
       }
       
       gl.bindVertexArray(quadVAO)
@@ -93,5 +123,28 @@ export default ({ path }) => {
     renderLoop(0)
   }, [])
 
-  return <StyledCanvas ref={canvasRef} />
+  const canvas = useMemo(() => <StyledCanvas ref={canvasRef} />, [])
+
+  const togglePlaying = () => {
+    const audio = internalStatus.current.audio
+    if (!audio) {
+      return
+    }
+    if (audio.paused) {
+      
+      audio.play().then(() => {
+        setPlaying(true)
+      }).catch(e => {
+        console.error(e.message)
+      })
+    } else {
+      audio.pause()
+      setPlaying(false)
+    } 
+  }
+
+  return <>
+      <PlayButton playing={playing} onClick={togglePlaying} />
+      {canvas}
+    </>
 }
