@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="theme-color" content="#888888">
+  <title>Pengfei Shen -resume</title>
+
+  <style>
+    @font-face {
+      font-family: 'Fira Mono';
+      src: url('https://arthas.me/font/FiraMono-Regular.ttf');
+    }
+
+    body {
+      image-rendering: -moz-crisp-edges;
+      -ms-interpolation-mode: nearest-neighbor;
+      image-rendering: pixelated;
+      font-family: 'Fira Mono', sans-serif;
+      background: #888888;
+    }
+
+    @media (max-width: 576px) {
+      .main {
+        margin: 24px 10px;
+        border: 20px solid transparent;
+        background: #FFF;
+        -webkit-background-clip: padding;
+        background-clip: padding-box;
+        border-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAABC0lEQVR4nO3b22qDQBhF4fUX3/+VJzelFZO2nprFzOx1L+x8KijEAhp9V1cPbq31Z1BVtNaoKriAsNw3yekT4fQZ7B4AvhA4eiVXFR//tOntrW6HQw0DAOcQhgKA4wjDAcAxhCEBYD/CsACwD2FoAPgbYXgA+B1hCgD4GWEaAHiNMBUAPCN0/S5w5tF3W7cAV17h13DT3QLbAmAPsAuAPcAuAPYAuwDYA+wCYA+wC4A9wC4A9gC7ANgD7AJgD7ALgD3ALgD2ALsA2APsAmAPsAuAPcAuAPYAuwDYA+wCYA+wC4A9wC4A9gC7ANgD7AJgD7CbHmCBe/513WsL3x8ed/kR9dXWp36+Xw88ALuDO4uBYOejAAAAAElFTkSuQmCC') 20 repeat;
+        border-image-width: 60px;
+      }
+
+      ul {
+        padding-left: 20px;
+      }
+    }
+
+    @media (min-width: 576px) {
+      .main {
+        margin: 24px 20px;
+        border: 60px solid transparent;
+        background: #FFF;
+        -webkit-background-clip: padding;
+        background-clip: padding-box;
+        border-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAABC0lEQVR4nO3b22qDQBhF4fUX3/+VJzelFZO2nprFzOx1L+x8KijEAhp9V1cPbq31Z1BVtNaoKriAsNw3yekT4fQZ7B4AvhA4eiVXFR//tOntrW6HQw0DAOcQhgKA4wjDAcAxhCEBYD/CsACwD2FoAPgbYXgA+B1hCgD4GWEaAHiNMBUAPCN0/S5w5tF3W7cAV17h13DT3QLbAmAPsAuAPcAuAPYAuwDYA+wCYA+wC4A9wC4A9gC7ANgD7AJgD7ALgD3ALgD2ALsA2APsAmAPsAuAPcAuAPYAuwDYA+wCYA+wC4A9wC4A9gC7ANgD7AJgD7CbHmCBe/513WsL3x8ed/kR9dXWp36+Xw88ALuDO4uBYOejAAAAAElFTkSuQmCC') 20 repeat;
+        border-image-width: 60px;
+      }
+    }
+
+    @media (min-width: 960px) {
+      .main {
+        max-width: 766px;
+        margin: 24px auto;
+        border: 60px solid transparent;
+        background: #FFF;
+        -webkit-background-clip: padding;
+        background-clip: padding-box;
+        border-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAABC0lEQVR4nO3b22qDQBhF4fUX3/+VJzelFZO2nprFzOx1L+x8KijEAhp9V1cPbq31Z1BVtNaoKriAsNw3yekT4fQZ7B4AvhA4eiVXFR//tOntrW6HQw0DAOcQhgKA4wjDAcAxhCEBYD/CsACwD2FoAPgbYXgA+B1hCgD4GWEaAHiNMBUAPCN0/S5w5tF3W7cAV17h13DT3QLbAmAPsAuAPcAuAPYAuwDYA+wCYA+wC4A9wC4A9gC7ANgD7AJgD7ALgD3ALgD2ALsA2APsAmAPsAuAPcAuAPYAuwDYA+wCYA+wC4A9wC4A9gC7ANgD7AJgD7CbHmCBe/513WsL3x8ed/kR9dXWp36+Xw88ALuDO4uBYOejAAAAAElFTkSuQmCC') 20 repeat;
+        border-image-width: 60px;
+      }
+    }
+
+    #select-lang {
+      text-align: right;
+      padding: 0 20px;
+    }
+
+
+    section {
+      padding: 10px;
+      color: #444;
+    }
+
+    .profile li {
+      list-style-type: none
+    }
+
+    a {
+      color: #23213d;
+      text-decoration: none;
+    }
+
+    .header {
+      margin: 0 auto;
+      color: #23213d;
+      text-align: center;
+    }
+
+    .values {
+      color: #23213d;
+      font-weight: 600;
+      word-wrap: break-word;
+    }
+  </style>
+</head>
+
+<body>
+  <p id='select-lang'><a href="#EN" onclick="toggle('en')">English</a> | <a href="#ZH" onclick="toggle('zh')">中文</a></p>
+  <div class="main" id="en">
+    <section class="header">
+      <h2>Pengfei Shen</h2>
+    </section>
+    <section class="profile">
+      <h3>Profile</h3>
+      <ul>
+        <li>
+          <p>Phone Number: <span class="values">15503624843<span></p>
+        </li>
+        <li>
+          <p>Email: <span class="values"><a href="mailto:spf@arthas.me">spf@arthas.me</a></span></p>
+        </li>
+        <li>
+          <p>Website: <span class="values"><a href="https://arthas.me" target="_blank">https://arthas.me</a></span></p>
+        </li>
+        <li>
+          <p>Github: <span class="values"><a href="https://github.com/Deadalusmask" target="_blank">https://github.com/Deadalusmask</a></span></p>
+        </li>
+        <li>
+          <p>Birthday: <span class="values">1997/4</span></p>
+        </li>
+      </ul>
+    </section>
+    <section class="education">
+      <h3>Education</h3>
+      <ul>
+        <li>
+          <span class="values">Sep,2015 - Now Taiyuan University of Technology, B.Eng.</span>
+          <p>Software College, Software Engineering</p>
+        </li>
+      </ul>
+    </section>
+    <section class="skills">
+      <h3>Skills & Interests</h3>
+      <ul>
+        <li>
+          <span class="values">JavaScript</span>
+          <p>Proficient in ES6, WebGL and React.js;</p>
+        </li>
+        <li>
+          <span class="values">Python</span>
+          <p>Familiar with RESTful/GraphQL style API coding in Python, daily scripts writing, knowledge and experience
+            in
+            OpenCV and TensorFlow;</p>
+        </li>
+        <li>
+          <span class="values">PHP</span>
+          <p>Skilled in PHP serverside developing, familiar with backend developing with Laravel framework;</p>
+        </li>
+        <li>
+          <span class="values">Linux</span>
+          <p>Familiar with Debian / Archlinux server environment seting up and service deploying, raspberry pie based
+            smart home, Docker;</p>
+        </li>
+        <li>
+          <span class="values">Painting</span>
+          <p>Amateur in painting, learnt some sketch drawing basis, Familiar with modeling and rendering knowledges,
+            retro pixel art fan.</p>
+        </li>
+      </ul>
+    </section>
+    <section class="projects">
+      <h3>Projects</h3>
+      <ul>
+        <li>
+          <span class="values">ArGL</span>
+          <p>Personal WebGL helper library, implemented obj and gltf loader and various rendering effects.</p>
+        </li>
+        <li>
+          <span class="values">WBzz</span>
+          <p>A sina weibo crawl program with Vue.js frontend and Python Flask backend. It could get a weibo user's
+            friends circle infos</p>
+        </li>
+        <li>
+          <span class="values">太原理工大学学生处</span>
+          <p>Website for Student Office in TYUT，implemented features of main page management, section management,
+            article management and file-resource upload management. this project is using Laravel framework.</p>
+        </li>
+
+
+      </ul>
+    </section>
+  </div>
+  <div class="main" id="zh">
+    <section class="header">
+      <h2>申鹏飞</h2>
+    </section>
+    <section class="profile">
+      <h3>个人资料</h3>
+      <ul>
+        <li>
+          <p>联系电话： <span class="values">15503624843<span></p>
+        </li>
+        <li>
+          <p>电子邮箱： <span class="values"><a href="mailto:spf@arthas.me">spf@arthas.me</a></span></p>
+        </li>
+        <li>
+          <p>个人网站： <span class="values"><a href="https://arthas.me" target="_blank">https://arthas.me</a></span></p>
+        </li>
+        <li>
+          <p>Github： <span class="values"><a href="https://github.com/Deadalusmask" target="_blank">https://github.com/Deadalusmask</a></span></p>
+        </li>
+        <li>
+          <p>出生年月： <span class="values">1997/4</span></p>
+        </li>
+      </ul>
+    </section>
+    <section class="education">
+      <h3>教育背景</h3>
+      <ul>
+        <li>
+          <span class="values">2015年9月至今 太原理工大学</span>
+          <p>软件学院 软件工程专业</p>
+        </li>
+      </ul>
+    </section>
+    <section class="skills">
+      <h3>专业技能</h3>
+      <ul>
+        <li>
+          <span class="values">JavaScript</span>
+          <p>熟悉ES6，WebGL和React.js</p>
+        </li>
+        <li>
+          <span class="values">Python</span>
+          <p>熟悉使用Python开发RESTful/GraphQL格式的接口、日常脚本的编写、OpenCV、TensorFlow入门；</p>
+        </li>
+        <li>
+          <span class="values">PHP</span>
+          <p>熟悉PHP服务端开发，遵守PSR规范，熟练使用php流行框架Laravel进行web后台开发；</p>
+        </li>
+        <li>
+          <span class="values">Linux</span>
+          <p>熟悉 Debian / Archlinux 服务器的环境搭建和服务部署、树莓派；</p>
+        </li>
+        <li>
+          <span class="values">Painting</span>
+          <p>业余兴趣是美术，有一些素描基础，了解一些模型和渲染的知识，像素风爱好者。</p>
+        </li>
+      </ul>
+    </section>
+    <section class="projects">
+      <h3>项目经验</h3>
+      <ul>
+        <li>
+          <span class="values">ArGL</span>
+          <p>个人开发的WebGL帮助库, 实现了obj和gltf的模型文件加载以及多种渲染效果。</p>
+        </li>
+        <li>
+          <span class="values">WBzz</span>
+          <p>一个新浪微博的爬虫程序，可以爬取用户的朋友圈信息。前端使用Vue.js，后端使用Flask框架。</p>
+        </li>
+        <li>
+          <span class="values">太原理工大学学生处</span>
+          <p>太原理工大学学生处的工作网站，实现后台主页管理、栏目管理、文章管理、上传文件资源管理等功能，使用Laravel框架开发。</p>
+        </li>
+      </ul>
+    </section>
+  </div>
+  <script>
+    (function () {
+      document.getElementById('zh').style.display = 'none';
+    })()
+    function toggle(id) {
+      if (id == 'en') {
+        document.getElementById('en').style.display = 'block';
+        document.getElementById('zh').style.display = 'none';
+      } else {
+        document.getElementById('en').style.display = 'none';
+        document.getElementById('zh').style.display = 'block';
+      }
+
+    }
+  </script>
+</body>
+
+</html>

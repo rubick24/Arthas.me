@@ -65,7 +65,6 @@ export default ({ path }) => {
   }
 
   useEffect(() => {
-    
     const audioContext = new AudioContext()
     const audio = document.createElement('audio')
     audio.src = utSource
