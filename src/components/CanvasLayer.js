@@ -24,6 +24,8 @@ const PlayButton = styled.button`
   &::before {
     content: ${props => props.playing ? '"⏸"' : '"▶️"'};
     cursor: pointer;
+    font-size: 24px;
+    line-height: 1.3;
   }
 `
 
@@ -41,18 +43,51 @@ export default ({ path }) => {
     internalStatus.current.path = path
     internalStatus.current.triggerAnimation = true
   }
+
+  const togglePlaying = () => {
+    const { audio, audioContext } = internalStatus.current
+    if (!audio) {
+      return
+    }
+    if (audio.paused) {
+      audio.play().then(() => {
+        setPlaying(true)
+        if (audioContext.state === 'suspended') {
+          audioContext.resume()
+        }
+      }).catch(e => {
+        console.warn(e.message)
+      })
+    } else {
+      audio.pause()
+      setPlaying(false)
+    } 
+  }
+
   useEffect(() => {
+    
+    const audioContext = new AudioContext()
     const audio = document.createElement('audio')
     audio.src = utSource
-    // audio.style.display = 'none'
-    // document.body.appendChild(audio)
-    internalStatus.current.audio = audio
-    // audio.play().then(() => {
-    //   // internalStatus.current.playing = true
-    //   setPlaying(true)
-    // }).catch(e => {
-    //   console.error(e, e.message)
-    // })
+    internalStatus.current = {
+      ...internalStatus.current,
+      audioContext,
+      audio
+    }
+
+    const analyser = audioContext.createAnalyser()
+    analyser.fftSize = 1024
+    const frequencyData = new Float32Array(analyser.frequencyBinCount)
+
+    const source = audioContext.createMediaElementSource(audio)
+    source.connect(analyser)
+    analyser.connect(audioContext.destination)
+
+    audio.play().then(() => {
+      setPlaying(true)
+    }).catch(e => {
+      console.warn(e.message)
+    })
 
     const canvas = canvasRef.current
     if (!canvas) {
@@ -78,7 +113,7 @@ export default ({ path }) => {
     gl.enableVertexAttribArray(0)
     gl.vertexAttribPointer(0, 2, gl.FLOAT, true, 8, 0)
     gl.bindBuffer(gl.ARRAY_BUFFER, null)
-    gl.bindVertexArray(null)
+    // gl.bindVertexArray(null)
     shader.setUniform('iResolution', 'VEC2', [
       canvas.clientWidth,
       canvas.clientHeight
@@ -93,6 +128,14 @@ export default ({ path }) => {
     }
     window.addEventListener('click', handleGlobalClick)
 
+    // uniform buffer
+    const uniformBlockIndex = gl.getUniformBlockIndex(shader.program, 'Block')
+    const ubuffer = gl.createBuffer()
+    gl.bindBuffer(gl.UNIFORM_BUFFER, ubuffer)
+    const uniformBufferIndex = 0
+    gl.uniformBlockBinding(shader.program, uniformBlockIndex, uniformBufferIndex)
+    gl.bindBufferBase(gl.UNIFORM_BUFFER, uniformBufferIndex, ubuffer)
+
     gl.clearColor(0, 0, 0, 0)
     const renderLoop = time => {
       gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT)
@@ -105,17 +148,17 @@ export default ({ path }) => {
         ])
         gl.viewport(0, 0, canvas.width, canvas.height)
       }
-      shader.use()
       shader.setUniform('iTime', 'FLOAT', time)
 
+      analyser.getFloatFrequencyData(frequencyData) // byteLength: 512 * 4
+      gl.bufferData(gl.UNIFORM_BUFFER, frequencyData, gl.DYNAMIC_DRAW)
+
       const s = internalStatus.current
-      
+
       if (s.triggerAnimation) {
         s.triggerAnimation = false
         shader.setUniform('uAnimationStart', 'FLOAT', time)
       }
-      
-      gl.bindVertexArray(quadVAO)
       gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4)
 
       requestAnimationFrame(renderLoop)
@@ -124,24 +167,6 @@ export default ({ path }) => {
   }, [])
 
   const canvas = useMemo(() => <StyledCanvas ref={canvasRef} />, [])
-
-  const togglePlaying = () => {
-    const audio = internalStatus.current.audio
-    if (!audio) {
-      return
-    }
-    if (audio.paused) {
-      
-      audio.play().then(() => {
-        setPlaying(true)
-      }).catch(e => {
-        console.error(e.message)
-      })
-    } else {
-      audio.pause()
-      setPlaying(false)
-    } 
-  }
 
   return <>
       <PlayButton playing={playing} onClick={togglePlaying} />
