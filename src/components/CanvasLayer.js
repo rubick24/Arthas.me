@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useMemo } from 'react'
 import styled from 'styled-components'
-// import { useGlobalStatus } from './store'
+import { useGlobalStatus } from './store'
 import Shader from './shader'
 import vsSource from 'raw-loader!./shader/main.vert'
 import fsSource from 'raw-loader!./shader/main.frag'
@@ -13,24 +13,35 @@ const StyledCanvas = styled.canvas`
   z-index: 100;
 `
 
-const PlayButton = styled.button`
+const FixedButton = styled.button`
   position: fixed;
-  bottom: 0;
   right: 0;
   outline: none;
   background: none;
   border: none;
   padding: 0;
   &::before {
-    content: ${props => props.playing ? '"⏸"' : '"▶️"'};
     cursor: pointer;
     font-size: 24px;
     line-height: 1.3;
   }
 `
+const PlayButton = styled(FixedButton)`
+  bottom: 0;
+  &::before {
+    content: ${props => props.playing ? '"⏸"' : '"▶️"'};
+  }
+`
+
+const BackToTopButton = styled(FixedButton)`
+  bottom: 32px;
+  &::before {
+    content: "🔝";
+  }
+`
 
 export default ({ path }) => {
-  // const [gs, setGs] = useGlobalStatus()
+  const gs = useGlobalStatus()[0]
   const [playing, setPlaying] = useState(false)
   const canvasRef = useRef()
   const internalStatus = useRef({
@@ -38,10 +49,12 @@ export default ({ path }) => {
     path: '',
     audio: null
   })
-  if (internalStatus.current.path !== path) {
+  if (gs.prePath !== path && gs.prePath) {
+    // console.log(internalStatus.current.oldPath, '#', internalStatus.current.path, gs.prePath, path)
     internalStatus.current.oldPath = internalStatus.current.path
-    internalStatus.current.path = path
     internalStatus.current.triggerAnimation = true
+    // forward or backward
+    internalStatus.current.path = internalStatus.current.path === path ? gs.prePath : path
   }
 
   const togglePlaying = () => {
@@ -167,8 +180,23 @@ export default ({ path }) => {
 
   const canvas = useMemo(() => <StyledCanvas ref={canvasRef} />, [])
 
+  const [atTop, setAtTop] = useState(true)
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY !== 0) {
+        setAtTop(false)
+      } else {
+        setAtTop(true)
+      }
+    }
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  })
+  const handleBackToTop = () => window.scrollTo({top: 0, behavior: 'smooth'})
+  
   return <>
-      <PlayButton playing={playing} onClick={togglePlaying} />
-      {canvas}
-    </>
+    {atTop ? null : <BackToTopButton onClick={handleBackToTop} />}
+    <PlayButton aria-label='play/pause' playing={playing} onClick={togglePlaying} />
+    {canvas}
+  </>
 }

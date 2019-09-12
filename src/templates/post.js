@@ -1,6 +1,8 @@
 import React from 'react'
-import { graphql, Link } from 'gatsby'
+import { graphql } from 'gatsby'
 import styled from 'styled-components'
+import { Helmet } from 'react-helmet'
+import Link from '../components/TransitionLink'
 
 const Hr = styled.hr`
   border: none;
@@ -25,6 +27,9 @@ export default ({ data, pageContext }) => {
   const post = data.markdownRemark
   return (
     <>
+      <Helmet>
+        <title>{post.frontmatter.title} -Arthas.me</title>
+      </Helmet>
       <Link to='/posts'>返回</Link>
       <h1>{post.frontmatter.title}</h1>
       <p>Published at {post.frontmatter.date}</p>

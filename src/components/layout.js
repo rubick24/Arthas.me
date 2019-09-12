@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet'
 import styled from 'styled-components'
 import CanvasLayer from './CanvasLayer'
 
-const MainContainer = styled.div`
+const MainContainer = styled.main`
   padding: 2.625rem 1.3125rem;
   max-width: 48rem;
   margin-left: auto;
@@ -27,22 +27,25 @@ export default ({ children, location }) => {
       path.current = location.pathname
       setVisiable(false)
     }
-    const renderTimeout = setTimeout(() => setVisiable(true), 500)
+    const renderTimeout = setTimeout(() => setVisiable(true), 250)
     return () => clearTimeout(renderTimeout)
   }, [location.pathname])
   const shouldRender =
     path.current === location.pathname &&
     (visiable || typeof window === `undefined`)
-  return (
-    <>
-      <Helmet>
-        <link
-          href="https://fonts.googleapis.com/css?family=Fira+Code|Fira+Sans&display=swap"
-          rel="stylesheet"
-        />
-      </Helmet>
-      {canvasLayer}
-      {shouldRender ? <MainContainer>{children}</MainContainer> : null}
-    </>
-  )
+  return <>
+    <Helmet>
+      <title>Arthas.me</title>
+      <meta name='Description' content='random shits' />
+      <meta name='twitter:card' content='summary' />
+      <meta name='twitter:site' content='@deadalusmask' />
+      <meta name='twitter:creator' content='@deadalusmask' />
+      <link
+        href='https://fonts.googleapis.com/css?family=Fira+Code|Fira+Sans&display=swap'
+        rel='stylesheet'
+      />
+    </Helmet>
+    {canvasLayer}
+    {shouldRender ? <MainContainer>{children}</MainContainer> : null}
+  </>
 }

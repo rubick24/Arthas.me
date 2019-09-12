@@ -1,9 +1,14 @@
 import React from 'react'
-import { graphql, Link } from 'gatsby'
+import { graphql } from 'gatsby'
+import { Helmet } from 'react-helmet'
+import Link from '../components/TransitionLink'
 
 export default ({ data }) => {
   return (
     <>
+      <Helmet>
+        <title>posts -Arthas.me</title>
+      </Helmet>
       <Link to='/'>Index</Link>
       <div>posts</div>
       {data.allMarkdownRemark.edges.map(({ node }) => (
