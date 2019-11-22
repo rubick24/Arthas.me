@@ -14,6 +14,7 @@ const Hr = styled.hr`
 const BottomNavSec = styled.div`
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
 `
 const ContentWarpper = styled.div`
   & img {

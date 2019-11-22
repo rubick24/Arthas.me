@@ -92,8 +92,11 @@ export default ({ path }) => {
     const frequencyData = new Float32Array(analyser.frequencyBinCount)
 
     const source = audioContext.createMediaElementSource(audio)
+    const gainNode = audioContext.createGain()
     source.connect(analyser)
-    analyser.connect(audioContext.destination)
+    analyser.connect(gainNode)
+    gainNode.gain.value = 0.5
+    gainNode.connect(audioContext.destination)
 
     audio.play().then(() => {
       setPlaying(true)
