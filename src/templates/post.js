@@ -8,7 +8,7 @@ const Hr = styled.hr`
   border: none;
   height: 1px;
   background: #ddd;
-  margin: 24px 6px;
+  margin: 24px 0px;
 `
 
 const BottomNavSec = styled.div`
