@@ -1,7 +1,8 @@
-import React, { useState, useRef, useEffect, useMemo } from 'react'
+import React, { useRef, useEffect, useMemo } from 'react'
 import { Helmet } from 'react-helmet'
 import styled from 'styled-components'
 import CanvasLayer from './CanvasLayer'
+import { useGlobalStatus } from './store'
 
 const MainContainer = styled.main`
   padding: 2.625rem 1.3125rem;
@@ -19,33 +20,51 @@ const MainContainer = styled.main`
 `
 
 export default ({ children, location }) => {
-  const [visiable, setVisiable] = useState(false)
+  const [gs, setGs] = useGlobalStatus()
   const path = useRef(location.pathname)
-  const canvasLayer = useMemo(() => <CanvasLayer path={location.pathname} />, [location.pathname])
+  const canvasLayer = useMemo(() => <CanvasLayer path={location.pathname} />, [
+    location.pathname
+  ])
+
   useEffect(() => {
     if (path.current !== location.pathname) {
       path.current = location.pathname
-      setVisiable(false)
     }
-    const renderTimeout = setTimeout(() => setVisiable(true), 250)
-    return () => clearTimeout(renderTimeout)
-  }, [location.pathname])
-  const shouldRender =
-    path.current === location.pathname &&
-    (visiable || typeof window === `undefined`)
-  return <>
-    <Helmet>
-      <title>Arthas.me</title>
-      <meta name='Description' content='random shits' />
-      <meta name='twitter:card' content='summary' />
-      <meta name='twitter:site' content='@deadalusmask' />
-      <meta name='twitter:creator' content='@deadalusmask' />
-      <link
-        href='https://fonts.googleapis.com/css?family=Fira+Code|Fira+Sans&display=swap'
-        rel='stylesheet'
-      />
-    </Helmet>
-    {canvasLayer}
-    {shouldRender ? <MainContainer>{children}</MainContainer> : null}
-  </>
+    if (window.matchMedia) {
+      const mediaQueryList = window.matchMedia('(prefers-color-scheme: dark)')
+      const handleModeChange = e => {
+        if (gs.darkMode !== e.matches) {
+          setGs({ ...gs, darkMode: e.matches })
+        }
+        if (e.matches) {
+          document.body.style.backgroundColor = '#333333'
+          document.body.style.color = '#d8dbd8'
+        } else {
+          document.body.style.backgroundColor = 'unset'
+          document.body.style.color = 'unset'
+        }
+      }
+      mediaQueryList.addListener(handleModeChange)
+      handleModeChange(mediaQueryList)
+    }
+  }, [location.pathname, gs, setGs])
+  return (
+    <>
+      <Helmet>
+        <title>Arthas.me</title>
+        <meta name="Description" content="random shits" />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:site" content="@deadalusmask" />
+        <meta name="twitter:creator" content="@deadalusmask" />
+        <link
+          href="https://fonts.googleapis.com/css?family=Fira+Code|Fira+Sans&display=swap"
+          rel="stylesheet"
+        />
+      </Helmet>
+      {canvasLayer}
+      <MainContainer className={gs.darkMode ? 'dark-mode' : ''}>
+        {children}
+      </MainContainer>
+    </>
+  )
 }

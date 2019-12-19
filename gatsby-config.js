@@ -28,10 +28,9 @@ module.exports = {
             resolve: `gatsby-remark-vscode`,
             options: {
               colorTheme: {
-                defaultTheme: 'Solarized Light', // Required
-                prefersDarkTheme: 'Dark+ (default dark)', // Optional: used with `prefers-color-scheme: dark`
-                prefersLightTheme: 'Solarized Light' // Optional: used with `prefers-color-scheme: light`
-              }, // Read on for list of included themes. Also accepts object and function forms.
+                defaultTheme: 'Solarized Light',
+                prefersDarkTheme: 'Dark+ (default dark)'
+              },
               wrapperClassName: 'code'
               // logLevel: 'warn'       // Set to 'warn' to debug if something looks wrong
             }

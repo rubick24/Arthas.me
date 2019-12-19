@@ -49,13 +49,13 @@ export default ({ path }) => {
     path: '',
     audio: null
   })
-  if (gs.prePath !== path && gs.prePath) {
-    // console.log(internalStatus.current.oldPath, '#', internalStatus.current.path, gs.prePath, path)
+  if (gs.prePath && gs.prePath !== path) {
     internalStatus.current.oldPath = internalStatus.current.path
     internalStatus.current.triggerAnimation = true
     // forward or backward
     internalStatus.current.path = internalStatus.current.path === path ? gs.prePath : path
   }
+  internalStatus.current.darkMode = gs.darkMode
 
   const togglePlaying = () => {
     const { audio, audioContext } = internalStatus.current
@@ -169,6 +169,7 @@ export default ({ path }) => {
       gl.bufferData(gl.UNIFORM_BUFFER, frequencyData, gl.DYNAMIC_DRAW)
 
       const s = internalStatus.current
+      shader.setUniform('uDarkMode', 'BOOLEAN', s.darkMode)
 
       if (s.triggerAnimation) {
         s.triggerAnimation = false

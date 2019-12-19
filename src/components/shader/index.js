@@ -1,11 +1,12 @@
-function loadShader(gl, type, source) {
+const loadShader = (gl, type, source) => {
   const shader = gl.createShader(type)
+  if (!shader) {
+    throw new Error('can not create shader')
+  }
   gl.shaderSource(shader, source)
   gl.compileShader(shader)
   if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
-    const errMsg = `An error occurred compiling the shaders: ${gl.getShaderInfoLog(
-      shader
-    )}`
+    const errMsg = `An error occurred compiling the shaders: ${gl.getShaderInfoLog(shader)}`
     gl.deleteShader(shader)
     throw new Error(errMsg)
   }
@@ -16,91 +17,49 @@ export default class Shader {
     const vertexShader = loadShader(gl, gl.VERTEX_SHADER, vsSource)
     const fragmentShader = loadShader(gl, gl.FRAGMENT_SHADER, fsSource)
     const shaderProgram = gl.createProgram()
+    if (!shaderProgram) {
+      throw new Error('can not create shader program')
+    }
     gl.attachShader(shaderProgram, vertexShader)
     gl.attachShader(shaderProgram, fragmentShader)
     gl.linkProgram(shaderProgram)
     gl.deleteShader(vertexShader)
     gl.deleteShader(fragmentShader)
     if (!gl.getProgramParameter(shaderProgram, gl.LINK_STATUS)) {
-      console.error(
-        'Unable to initialize the shader program: ' +
-          gl.getProgramInfoLog(shaderProgram)
+      throw new Error(
+        `Unable to initialize the shader program: ${gl.getProgramInfoLog(shaderProgram)}`
       )
-      return null
     }
     this.gl = gl
     this.program = shaderProgram
   }
+
   use() {
     this.gl.useProgram(this.program)
   }
   setUniform(name, type, value) {
+    const stex = this.gl.getUniformLocation(this.program, name)
     switch (type) {
-      case 'BOOL':
-        return this.setBool(name, value)
+      case 'BOOLEAN':
+        return this.gl.uniform1i(stex, Number(value))
       case 'INT':
-        return this.setInt(name, value)
+        return this.gl.uniform1i(stex, Math.round(value))
       case 'FLOAT':
-        return this.setFloat(name, value)
+        return this.gl.uniform1f(stex, value)
       case 'VEC2':
-        return this.setVec2(name, value)
+        return this.gl.uniform2fv(stex, value)
       case 'VEC3':
-        return this.setVec3(name, value)
+        return this.gl.uniform3fv(stex, value)
       case 'VEC4':
-        return this.setVec4(name, value)
+        return this.gl.uniform4fv(stex, value)
       case 'MAT2':
-        return this.setMat2(name, value)
+        return this.gl.uniformMatrix2fv(stex, false, value)
       case 'MAT3':
-        return this.setMat3(name, value)
+        return this.gl.uniformMatrix3fv(stex, false, value)
       case 'MAT4':
-        return this.setMat4(name, value)
+        return this.gl.uniformMatrix4fv(stex, false, value)
       default:
         return
     }
-  }
-  setBool(name, value) {
-    this.gl.uniform1i(
-      this.gl.getUniformLocation(this.program, name),
-      Number(value)
-    )
-  }
-  setInt(name, value) {
-    this.gl.uniform1i(
-      this.gl.getUniformLocation(this.program, name),
-      Math.round(value)
-    )
-  }
-  setFloat(name, value) {
-    this.gl.uniform1f(this.gl.getUniformLocation(this.program, name), value)
-  }
-  setVec2(name, value) {
-    this.gl.uniform2fv(this.gl.getUniformLocation(this.program, name), value)
-  }
-  setVec3(name, value) {
-    this.gl.uniform3fv(this.gl.getUniformLocation(this.program, name), value)
-  }
-  setVec4(name, value) {
-    this.gl.uniform4fv(this.gl.getUniformLocation(this.program, name), value)
-  }
-  setMat2(name, value) {
-    this.gl.uniformMatrix2fv(
-      this.gl.getUniformLocation(this.program, name),
-      false,
-      value
-    )
-  }
-  setMat3(name, value) {
-    this.gl.uniformMatrix3fv(
-      this.gl.getUniformLocation(this.program, name),
-      false,
-      value
-    )
-  }
-  setMat4(name, value) {
-    this.gl.uniformMatrix4fv(
-      this.gl.getUniformLocation(this.program, name),
-      false,
-      value
-    )
   }
 }
