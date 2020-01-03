@@ -4,7 +4,7 @@ import Link from '../components/TransitionLink'
 export default () => {
   return <>
     <Helmet>
-      <title>index -Arthas.me</title>
+      <title>Arthas.me</title>
     </Helmet>
     <div>index page</div>
     <Link to='/posts'>Posts</Link>

@@ -56,6 +56,11 @@ export default ({ children, location }) => {
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:site" content="@deadalusmask" />
         <meta name="twitter:creator" content="@deadalusmask" />
+        <meta name="og:title" content="Arthas.me" />
+        <meta name="og:type" content="website" />
+        <meta name="og:image" content={`${location.host}/static/favicon.png`} />
+        <meta name="og:url" content={location.host + location.pathname} />
+        
         <link
           href="https://fonts.googleapis.com/css?family=Fira+Code|Fira+Sans&display=swap"
           rel="stylesheet"

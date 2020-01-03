@@ -8,6 +8,7 @@ export default ({ data }) => {
     <>
       <Helmet>
         <title>posts -Arthas.me</title>
+        <meta name="og:title" content="posts -Arthas.me" />
       </Helmet>
       <Link to='/'>Index</Link>
       <div>posts</div>

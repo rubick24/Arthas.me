@@ -30,6 +30,8 @@ export default ({ data, pageContext }) => {
     <>
       <Helmet>
         <title>{post.frontmatter.title} -Arthas.me</title>
+        <meta name="og:title" content={post.frontmatter.title} />
+        <meta name="og:type" content="article" />
       </Helmet>
       <Link to='/posts'>返回</Link>
       <h1>{post.frontmatter.title}</h1>

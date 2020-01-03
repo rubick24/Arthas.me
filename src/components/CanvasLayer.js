@@ -63,6 +63,7 @@ export default ({ path }) => {
       return
     }
     if (audio.paused) {
+      audio.src = utSource
       audio.play().then(() => {
         setPlaying(true)
         if (audioContext.state === 'suspended') {
@@ -80,7 +81,7 @@ export default ({ path }) => {
   useEffect(() => {
     const audioContext = new AudioContext()
     const audio = document.createElement('audio')
-    audio.src = utSource
+    // audio.src = utSource
     internalStatus.current = {
       ...internalStatus.current,
       audioContext,
@@ -98,11 +99,11 @@ export default ({ path }) => {
     gainNode.gain.value = 0.5
     gainNode.connect(audioContext.destination)
 
-    audio.play().then(() => {
-      setPlaying(true)
-    }).catch(e => {
-      console.warn(e.message)
-    })
+    // audio.play().then(() => {
+    //   setPlaying(true)
+    // }).catch(e => {
+    //   console.warn(e.message)
+    // })
 
     const canvas = canvasRef.current
     if (!canvas) {
@@ -200,7 +201,7 @@ export default ({ path }) => {
   
   return <>
     {atTop ? null : <BackToTopButton onClick={handleBackToTop} />}
-    <PlayButton aria-label='play/pause' playing={playing} onClick={togglePlaying} />
+    <PlayButton aria-label={playing ? 'pause' : 'play'} playing={playing} onClick={togglePlaying} />
     {canvas}
   </>
 }
