@@ -1,11 +1,10 @@
 import React from "react"
-import { Helmet } from 'react-helmet'
 import Link from '../components/TransitionLink'
+import SEO from '../components/SEO'
+
 export default () => {
   return <>
-    <Helmet>
-      <title>Arthas.me</title>
-    </Helmet>
+    <SEO />
     <div>index page</div>
     <Link to='/posts'>Posts</Link>
   </>

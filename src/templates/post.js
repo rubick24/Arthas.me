@@ -1,8 +1,8 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import styled from 'styled-components'
-import { Helmet } from 'react-helmet'
 import Link from '../components/TransitionLink'
+import SEO from '../components/SEO'
 
 const Hr = styled.hr`
   border: none;
@@ -24,15 +24,15 @@ const ContentWarpper = styled.div`
 `
 
 export default ({ data, pageContext }) => {
-  const { previous, next } = pageContext
+  const { previous, next, slug } = pageContext
   const post = data.markdownRemark
   return (
     <>
-      <Helmet>
-        <title>{post.frontmatter.title} -Arthas.me</title>
-        <meta name="og:title" content={post.frontmatter.title} />
-        <meta name="og:type" content="article" />
-      </Helmet>
+      <SEO
+        title={post.frontmatter.title}
+        pathname={slug}
+        article
+      />
       <Link to='/posts'>返回</Link>
       <h1>{post.frontmatter.title}</h1>
       <p>Published at {post.frontmatter.date}</p>

@@ -1,8 +1,8 @@
 module.exports = {
   plugins: [
+    `gatsby-plugin-react-helmet`,
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-sharp`,
-    `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -59,5 +59,12 @@ module.exports = {
       }
     }
   ],
-  siteMetadata: {}
+  siteMetadata: {
+    title: `Arthas.me`,
+    titleTemplate: `%s -Arthas.me`,
+    description: `random shits`,
+    url: `https://arthas.me`, // No trailing slash allowed!
+    image: `/favicon.png`, // Path to your image you placed in the 'static' folder
+    twitterUsername: "@deadalusmask",
+  },
 }

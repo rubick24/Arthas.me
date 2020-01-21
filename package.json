@@ -14,7 +14,7 @@
     "gatsby": "^2.13.15",
     "gatsby-plugin-manifest": "^2.2.9",
     "gatsby-plugin-offline": "latest",
-    "gatsby-plugin-react-helmet": "^3.1.21",
+    "gatsby-plugin-react-helmet": "latest",
     "gatsby-plugin-sharp": "^2.2.19",
     "gatsby-plugin-styled-components": "^3.1.1",
     "gatsby-remark-copy-linked-files": "^2.1.14",
@@ -26,7 +26,7 @@
     "katex": "^0.10.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-helmet": "^6.0.0-beta",
+    "react-helmet": "latest",
     "styled-components": "^4.3.2"
   },
   "devDependencies": {

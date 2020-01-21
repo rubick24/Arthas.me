@@ -1,15 +1,12 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import { Helmet } from 'react-helmet'
 import Link from '../components/TransitionLink'
+import SEO from '../components/SEO'
 
 export default ({ data }) => {
   return (
     <>
-      <Helmet>
-        <title>posts -Arthas.me</title>
-        <meta name="og:title" content="posts -Arthas.me" />
-      </Helmet>
+      <SEO title="posts" />
       <Link to='/'>Index</Link>
       <div>posts</div>
       {data.allMarkdownRemark.edges.map(({ node }) => (

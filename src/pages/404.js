@@ -1,12 +1,9 @@
 import React from "react"
-import { Helmet } from 'react-helmet'
 import Link from '../components/TransitionLink'
+import SEO from "../components/SEO"
 export default () => {
   return <>
-    <Helmet>
-      <title>404 -Arthas.me</title>
-      <meta name="og:title" content="404 -Arthas.me" />
-    </Helmet>
+    <SEO title="404" />
     <div>Page not found</div>
     <Link to='/'>Index</Link>
   </>
