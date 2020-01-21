@@ -1,15 +1,17 @@
 #version 300 es
 precision highp float;
 
-uniform float iTime;
-uniform vec2 iResolution;
-uniform vec2 iMouse;
+uniform float uTime;
+uniform float uAudioCurrentTime;
+uniform float uAudioStartAt;
+uniform vec2 uResolution;
+uniform vec2 uMouse;
 uniform int uDarkMode;
 uniform float uAnimationStart;
 
-const int DATA_LENGTH = 128;
-uniform Block {
-  float data[DATA_LENGTH];
+const int DATA_LENGTH = 554; // 261+293 *4
+uniform Audio {
+  vec4 data[DATA_LENGTH];
 };
 
 in vec2 fragCoord;
@@ -50,17 +52,33 @@ float audio(vec2 uv) {
   if (fragCoord.y < 32.) {
     pos.y = fragCoord.y/32. - 1.;
   }
-  int idx = int(pos.x * float(DATA_LENGTH));
-  float dx = (data[idx]+30.)/70.; // -30 <> -100 => -0 <> -1
-  return step(0., pos.y - dx); 
+  float key = ceil(pos.x * 88.);
+  float t = 0.1;
+  for (int i=0; i<DATA_LENGTH; i++) {
+    float midi = data[i][0];
+    // if (abs(midi - 20. - key) > .5) {
+    //   continue;
+    // } this equals to
+    float isCurrentKey = step(0., 0.5 - abs(midi - 20. - key));
+
+    float time = data[i][1];
+    float duration = data[i][2];
+    float delta = time - (uAudioCurrentTime - uAudioStartAt);
+    // if (delta > -duration && delta < 0.) {
+    //   t = (delta + duration) / duration; 
+    // } this equals to
+    float test = (1. - step(0., delta)) * step(0., delta + duration) * isCurrentKey;
+    t = mix(t, (delta + duration) / duration, test);
+  }
+  
+  return smoothstep(0., 0.01, pos.y + 1. - t);
 }
 
 void main() {
-  vec2 uv = fragCoord / iResolution;
-  vec2 p = (-iResolution + 2. * fragCoord) / iResolution.y; // -1 <> 1 by height  
-  vec2 pm = (-iResolution + 2. * vec2(iMouse.x, iResolution.y-iMouse.y)) / iResolution.y;
-
-  float ct = iTime - uAnimationStart;
+  vec2 uv = fragCoord / uResolution;
+  vec2 p = (-uResolution + 2. * fragCoord) / uResolution.y; // -1 <> 1 by height  
+  vec2 pm = (-uResolution + 2. * vec2(uMouse.x, uResolution.y-uMouse.y)) / uResolution.y;
+  float ct = uTime - uAnimationStart;
   float ctp = ct/500.; // cp -> 0-1;
   float animating = step(0., 1. - ctp); // uAnimationStart 后500ms为1.
   vec2 center = p - pm;
