@@ -11,10 +11,7 @@ const keyToFrequency = n => Math.pow(2, (n - 49) / 12) * 440
 const generateAudioSignal = (frequency, duration, time) => {
   let w = frequency * PI2
   const t = time / duration
-  const shape =
-    -0.25 * Math.sin(time * w * 3) +
-    0.25 * Math.sin(time * w) +
-    (Math.sqrt(3) / 2) * Math.cos(time * w)
+  const shape = -0.25 * Math.sin(time * w * 3) + 0.25 * Math.sin(time * w) + (Math.sqrt(3) / 2) * Math.cos(time * w)
   const volume = (Math.cos(t * Math.PI) + 1) / 2 // Math.exp(-3 * t)
   return shape * volume
 }
@@ -23,30 +20,28 @@ let started = false
 let startAt = Number.MAX_SAFE_INTEGER
 const start = async (audioCtx, dist, shader) => {
   started = true
-  
+
   // const tracks = await fetch('/wotw.json').then(res => res.json())
-  startAt = audioCtx.currentTime
-  shader.setUniform('uAudioStartAt', 'FLOAT', startAt)
-  tracks.forEach(notes => {
-    notes.forEach(note => {
-      note.source = audioCtx.createBufferSource()
-      const noteBufferData = new Float32Array(sampleRate * note.duration)
-      const frameCount = sampleRate * note.duration
-      for (let frame = 0; frame < frameCount; frame += 1) {
-        const time = frame / sampleRate
-        const f = keyToFrequency(note.midi - 20)
-        noteBufferData[frame] = generateAudioSignal(f, note.duration, time)
-      }
-      note.source.buffer = audioCtx.createBuffer(
-        1,
-        audioCtx.sampleRate * 3,
-        audioCtx.sampleRate
-      )
-      note.source.buffer.copyToChannel(noteBufferData, 0, 0)
-      note.source.connect(dist)
-      note.source.start(startAt + note.time)
+  setTimeout(() => {
+    startAt = audioCtx.currentTime
+    shader.setUniform('uAudioStartAt', 'FLOAT', startAt)
+    tracks.forEach(notes => {
+      notes.forEach(note => {
+        note.source = audioCtx.createBufferSource()
+        const noteBufferData = new Float32Array(sampleRate * note.duration)
+        const frameCount = sampleRate * note.duration
+        for (let frame = 0; frame < frameCount; frame += 1) {
+          const time = frame / sampleRate
+          const f = keyToFrequency(note.midi - 20)
+          noteBufferData[frame] = generateAudioSignal(f, note.duration, time)
+        }
+        note.source.buffer = audioCtx.createBuffer(1, audioCtx.sampleRate * 3, audioCtx.sampleRate)
+        note.source.buffer.copyToChannel(noteBufferData, 0, 0)
+        note.source.connect(dist)
+        note.source.start(startAt + note.time)
+      })
     })
-  })
+  }, 50)
 }
 
 const StyledCanvas = styled.canvas`
@@ -71,14 +66,14 @@ const FixedButton = styled.button`
 const PlayButton = styled(FixedButton)`
   bottom: 32px;
   &::before {
-    content: ${props => props.playing ? '"⏸"' : '"▶️"'};
+    content: ${props => (props.playing ? '"⏸"' : '"▶️"')};
   }
 `
 
 const BackToTopButton = styled(FixedButton)`
   bottom: 64px;
   &::before {
-    content: "🔝";
+    content: '🔝';
   }
 `
 
@@ -164,17 +159,11 @@ export default ({ path }) => {
     gl.vertexAttribPointer(0, 2, gl.FLOAT, true, 8, 0)
     gl.bindBuffer(gl.ARRAY_BUFFER, null)
     // gl.bindVertexArray(null)
-    shader.setUniform('uResolution', 'VEC2', [
-      canvas.clientWidth,
-      canvas.clientHeight
-    ])
+    shader.setUniform('uResolution', 'VEC2', [canvas.clientWidth, canvas.clientHeight])
 
     // track mouse position for uniform
     const handleGlobalClick = e => {
-      shader.setUniform('uMouse', 'VEC2', [
-        e.clientX,
-        e.clientY
-      ])
+      shader.setUniform('uMouse', 'VEC2', [e.clientX, e.clientY])
     }
     window.addEventListener('click', handleGlobalClick)
 
@@ -187,12 +176,12 @@ export default ({ path }) => {
     gl.bindBufferBase(gl.UNIFORM_BUFFER, uniformBufferIndex, ubuffer)
 
     const dataArr = new Float32Array((tracks[0].length + tracks[1].length) * 4)
-    for (let i=0;i<tracks[0].length;i++) {
+    for (let i = 0; i < tracks[0].length; i++) {
       dataArr[i * 4] = tracks[0][i].midi
       dataArr[i * 4 + 1] = tracks[0][i].time
       dataArr[i * 4 + 2] = tracks[0][i].duration
     }
-    for (let i=0;i<tracks[1].length;i++) {
+    for (let i = 0; i < tracks[1].length; i++) {
       dataArr[tracks[0].length * 4 + i * 4] = tracks[1][i].midi
       dataArr[tracks[0].length * 4 + i * 4 + 1] = tracks[1][i].time
       dataArr[tracks[0].length * 4 + i * 4 + 2] = tracks[1][i].duration
@@ -213,10 +202,7 @@ export default ({ path }) => {
       if (window.innerHeight !== canvas.height || window.innerWidth !== canvas.width) {
         canvas.height = window.innerHeight
         canvas.width = window.innerWidth
-        shader.setUniform('uResolution', 'VEC2', [
-          canvas.clientWidth,
-          canvas.clientHeight
-        ])
+        shader.setUniform('uResolution', 'VEC2', [canvas.clientWidth, canvas.clientHeight])
         gl.viewport(0, 0, canvas.width, canvas.height)
       }
       shader.setUniform('uTime', 'FLOAT', time)
@@ -250,11 +236,13 @@ export default ({ path }) => {
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   })
-  const handleBackToTop = () => window.scrollTo({top: 0, behavior: 'smooth'})
-  
-  return <>
-    {atTop ? null : <BackToTopButton onClick={handleBackToTop} />}
-    <PlayButton aria-label={playing ? 'pause' : 'play'} playing={playing} onClick={togglePlaying} />
-    {canvas}
-  </>
+  const handleBackToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' })
+
+  return (
+    <>
+      {atTop ? null : <BackToTopButton onClick={handleBackToTop} />}
+      <PlayButton aria-label={playing ? 'pause' : 'play'} playing={playing} onClick={togglePlaying} />
+      {canvas}
+    </>
+  )
 }

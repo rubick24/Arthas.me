@@ -3,6 +3,7 @@ import { graphql } from 'gatsby'
 import styled from 'styled-components'
 import Link from '../components/TransitionLink'
 import SEO from '../components/SEO'
+import Disqus from 'disqus-react'
 
 const Hr = styled.hr`
   border: none;
@@ -15,6 +16,7 @@ const BottomNavSec = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  margin-bottom: 24px;
 `
 const ContentWarpper = styled.div`
   & img {
@@ -26,6 +28,14 @@ const ContentWarpper = styled.div`
 export default ({ data, pageContext }) => {
   const { previous, next, slug } = pageContext
   const post = data.markdownRemark
+  
+  const disqusShortname = 'arthas-me';
+  const disqusConfig = {
+      url: 'http://arthas.me' + slug,
+      identifier: slug,
+      title: post.frontmatter.title,
+  }
+
   return (
     <>
       <SEO
@@ -42,6 +52,11 @@ export default ({ data, pageContext }) => {
         {previous ? <Link to={previous.fields.slug}>{previous.frontmatter.title}</Link> : ' '}
         {next ? <Link to={next.fields.slug}>{next.frontmatter.title}</Link> : ' '}
       </BottomNavSec>
+
+      {/* <Disqus.CommentCount shortname={disqusShortname} config={disqusConfig}>
+        Comments
+      </Disqus.CommentCount> */}
+      <Disqus.DiscussionEmbed shortname={disqusShortname} config={disqusConfig} />
     </>
   )
 }
