@@ -22,11 +22,12 @@ const start = async (audioCtx, dist, shader) => {
   started = true
 
   // const tracks = await fetch('/wotw.json').then(res => res.json())
-  setTimeout(() => {
-    startAt = audioCtx.currentTime
-    shader.setUniform('uAudioStartAt', 'FLOAT', startAt)
-    tracks.forEach(notes => {
-      notes.forEach(note => {
+  startAt = audioCtx.currentTime
+  shader.setUniform('uAudioStartAt', 'FLOAT', startAt)
+  tracks.forEach(notes => {
+    notes.reduce(async (pre, note) => {
+      await pre
+      return new Promise(r => setTimeout(r, 0)).then(() => {
         note.source = audioCtx.createBufferSource()
         const noteBufferData = new Float32Array(sampleRate * note.duration)
         const frameCount = sampleRate * note.duration
@@ -40,8 +41,8 @@ const start = async (audioCtx, dist, shader) => {
         note.source.connect(dist)
         note.source.start(startAt + note.time)
       })
-    })
-  }, 50)
+    }, Promise.resolve(null))
+  })
 }
 
 const StyledCanvas = styled.canvas`
