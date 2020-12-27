@@ -10,6 +10,7 @@
     "export": "next export"
   },
   "dependencies": {
+    "disqus-react": "^1.0.10",
     "gray-matter": "^4.0.2",
     "next": "^10.0.3",
     "react": "^17.0.1",

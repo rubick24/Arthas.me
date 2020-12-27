@@ -2,6 +2,7 @@ import { useRouter } from 'next/router'
 import ErrorPage from 'next/error'
 import Link from 'next/link'
 import Head from 'next/head'
+import { DiscussionEmbed } from 'disqus-react'
 import { getPostBySlug, getAllPosts } from '../../lib/api'
 
 export default function Post({ post, prev, next }) {
@@ -42,10 +43,18 @@ export default function Post({ post, prev, next }) {
     <span>{timeStr}</span>
     <div className="md-content" dangerouslySetInnerHTML={{__html: post.content}}></div>
     <hr className="hr"/>
-    <div style={{display: 'flex', justifyContent: 'space-between'}}>
+    <div style={{display: 'flex', justifyContent: 'space-between', marginBottom: '24px'}}>
       {prev ? <Link href={`/posts/${prev.slug}`}><a style={{marginRight: '24px'}}>{prev.title}</a></Link> : <a></a>}
       {next ? <Link href={`/posts/${next.slug}`}><a>{next.title}</a></Link> : <a></a>}
     </div>
+    <DiscussionEmbed
+      shortname='arthas-me'
+      config={{
+        url: `https://arthas.me/posts/${post.slug}`,
+        identifier: post.slug,
+        title: post.title,
+      }}
+    />
   </>
 }
 

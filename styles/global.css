@@ -46,9 +46,12 @@ code {
   margin-left: auto;
   margin-right: auto;
 }
+.md-content {
+  word-break: break-all;
+}
 .md-content img {
   display: block;
-  max-width: 45.375rem;
+  max-width: 100%;
   margin: 0px auto;
 }
 
