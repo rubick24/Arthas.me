@@ -12,7 +12,7 @@ category: 日常
 
 通过 Aseprite 知道了一位叫[Mort](https://www.youtube.com/user/atMNRArt)的 Youtuber，他的视频和直播是一些关于像素画技巧的，然后他是个法国人，口音很有意思。
 
-贴张自己画的 IO，尝试过才知道做动画的麻烦。
+贴张 IO。
 
 ![IO](/img/IO-l.png)
 
@@ -20,10 +20,9 @@ category: 日常
 
 ![IO-5](/img/IO-5.gif)
 
-做了个小角色的动画，用了知乎一位大佬的[MetaSprite](https://github.com/WeAthFoLD/MetaSprite)导入 Unity，省去了自己在 Unity 里建立动画和控制器的步骤。控制脚本什么的也容易写，但是不知道该怎么实现像素效果的 3D 光照，可能得自己写个 shader 什么的吧。
+做了个小角色的动画，用了知乎一位大佬的[MetaSprite](https://github.com/WeAthFoLD/MetaSprite)导入 Unity，省去了自己在 Unity 里建立动画和控制器的步骤。控制脚本什么的也容易写。
 
 Blender 方面又在家看了[Blender Guru](https://www.youtube.com/user/AndrewPPrice)的两个教程，分别是甜甜圈和铁砧，比之前 B 站看的台湾大神系列新一些，并且每个教程结束时的成果也好看点。
-贴自己做的（懒得打光了，只加了一个太阳光。。
 
 ![donut](/img/donut.png)
 
@@ -40,9 +39,5 @@ MagicalVoxel 保存的文件为自定义的 vox 格式，RIFF 格式的文件，
 ![u3d](/img/u3d.png)
 
 ![2d](/img/2d.png)
-
-<br >
-
-最后是 Docker,下载了两三次了，算是稍微会用点了吧。。
 
 以上。

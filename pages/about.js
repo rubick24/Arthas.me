@@ -4,14 +4,8 @@ import Head from 'next/head'
 function About() {
   return <>
     <Head>
-      <title>First Post</title>
+      <title>About</title>
     </Head>
-    <h1>First Post</h1>
-    <h2>
-      <Link href="/">
-        <a>Back to home</a>
-      </Link>
-    </h2>
   </>
 }
 
