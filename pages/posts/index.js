@@ -7,12 +7,6 @@ export default function Posts({ posts }) {
     <Head>
       <title>Posts -Arthas.me</title>
     </Head>
-    <h2>
-      <Link href="/">
-        <a>Arthas.me</a>
-      </Link>
-      {' / Posts'}
-    </h2>
     <ul>
       {
         posts.map(post => <li key={post.slug}>

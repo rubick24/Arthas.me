@@ -10,7 +10,7 @@
     --text-color: #ddd;
     --link-active-color: #fff;
     --border-color: #666;
-  } 
+  }
 }
 
 html,
@@ -22,7 +22,6 @@ body {
     'WenQuanYi Micro Hei', 'Noto Sans SC', sans-serif;
   font-size: 16px;
   line-height: 1.5;
-
 }
 
 * {
@@ -31,7 +30,8 @@ body {
 a {
   color: var(--text-color);
 }
-a:hover, a:active {
+a:hover,
+a:active {
   color: var(--link-active-color);
 }
 
@@ -39,26 +39,42 @@ code {
   font-family: 'Fira Code', 'Source Code Pro', monospace;
 }
 
-
 .page {
-  padding: 2.625rem 1.3125rem;
+  padding: 2.5rem 1.5rem;
   max-width: 48rem;
   margin-left: auto;
   margin-right: auto;
 }
+.page > .page-heading {
+  font-weight: bold;
+  transition: 0.3s;
+  margin-top: 1.5rem;
+}
+.page > .page-heading.h1 {
+  font-size: 2rem;
+  line-height: 3rem;
+}
+.page > .page-heading.h2 {
+  font-size: 1.5rem;
+  line-height: 2.25rem;
+}
+.page > .page-heading.h3 {
+  font-size: 1.17rem;
+  line-height: 1.75rem;
+}
+
 .md-content {
   word-break: break-all;
 }
 .md-content img {
   display: block;
   max-width: 100%;
-  margin: 0px auto;
+  margin: 0 auto;
 }
-
 
 .hr {
   border: none;
   height: 1px;
   background: var(--border-color);
-  margin: 24px 0px;
+  margin: 1.5rem 0;
 }

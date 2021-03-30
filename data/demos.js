@@ -30,7 +30,7 @@ export default [
     link: '/demo/play/'
   },
   {
-    title: 'moon',
+    title: 'retro pixel button',
     time: '2018.3',
     link: '/demo/pixel-button/'
   }

@@ -32,13 +32,15 @@ export default function Post({ post, prev, next }) {
       <meta name="twitter:image" content="/favicon.png" />
       <meta name="twitter:creator" content="@deadalusmask" />
       {/* <meta name="twitter:description" content="random shits" /> */}
+
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous"/>
     </Head>
-    <h3>
+    {/* <h3>
       <Link href="/"><a>Arthas.me</a></Link>
       {' / '}
       <Link href="/posts"><a>Posts</a></Link>
       {' /'}
-    </h3>
+    </h3> */}
     <h1>{post.title}</h1>
     <span>{timeStr}</span>
     <div className="md-content" dangerouslySetInnerHTML={{__html: post.content}}></div>
@@ -70,7 +72,7 @@ export async function getStaticProps({ params }) {
   }
   const posts = await getAllPosts(['slug', 'title'])
   const index = posts.findIndex(v => v.slug === params.slug)
-  
+
   return {
     props: {
       post,

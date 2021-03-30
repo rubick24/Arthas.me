@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import Head from 'next/head'
 import { getDemos } from '../lib/api'
 
@@ -9,18 +8,10 @@ export default function Demos({ demos  }) {
       <Head>
         <title>Demos -Arthas.me</title>
       </Head>
-      <h2>
-        <Link href="/">
-          <a>Arthas.me</a>
-        </Link>
-        {' / Demos'}
-      </h2>
       <ul>
         {demos.map(d => (
           <li key={d.link}>
-            <Link href={d.link}>
-              <a>{d.title}</a>
-            </Link>
+            <a href={d.link} target="_blank">{d.title}</a>
             <span> {d.time}</span>
           </li>
         ))}
