@@ -47,20 +47,23 @@ code {
 }
 .page > .page-heading {
   font-weight: bold;
-  transition: 0.3s;
+  transition: transform 0.3s;
+  font-size: 1rem;
   margin-top: 1.5rem;
+  transform-origin: left center;
 }
 .page > .page-heading.h1 {
-  font-size: 2rem;
-  line-height: 3rem;
+  transform: scale(2) translateY(16px);
+  max-width: 50%;
+  margin-bottom: 4rem;
 }
 .page > .page-heading.h2 {
-  font-size: 1.5rem;
-  line-height: 2.25rem;
+  transform: scale(1.5);
+  max-width: 67%;
 }
 .page > .page-heading.h3 {
-  font-size: 1.17rem;
-  line-height: 1.75rem;
+  transform: scale(1.25);
+  max-width: 80%;
 }
 
 .md-content {
