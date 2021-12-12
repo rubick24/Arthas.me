@@ -6,6 +6,7 @@ export default function Index() {
     <Head>
       <title>Arthas.me</title>
     </Head>
+    <h1>Athas.me</h1>
     <p>
       <Link href={`/posts`}><a>Posts</a></Link>
     </p>

@@ -41,6 +41,16 @@ export default function Post({ post, prev, next }) {
           crossOrigin="anonymous"
         />
       </Head>
+      <h2>
+        <Link href="/">
+          <a>Arthas.me</a>
+        </Link>
+        {' / '}
+        <Link href="/posts">
+          <a>Posts</a>
+        </Link>
+        {' / '}
+      </h2>
       <h1>{post.title}</h1>
       <span>{timeStr}</span>
       <div className="md-content" dangerouslySetInnerHTML={{ __html: post.content }}></div>

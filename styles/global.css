@@ -45,7 +45,7 @@ code {
   margin-left: auto;
   margin-right: auto;
 }
-.page > .header-wrapper {
+/* .page > .header-wrapper {
   width: 100%;
   overflow: hidden;
   margin-top: 1.5rem;
@@ -68,7 +68,7 @@ code {
 }
 .header-wrapper > .page-heading.h3 {
   transform: scale(1.25);
-}
+} */
 
 .md-content {
   word-break: break-all;
