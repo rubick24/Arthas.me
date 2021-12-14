@@ -69,6 +69,11 @@
         text-align: right;
         padding: 0 20px;
       }
+      #select-lang a.active {
+        text-decoration: none;
+        color: #000;
+        cursor: default;
+      }
 
       section {
         padding: 10px;
@@ -377,8 +382,8 @@
         document.getElementById(lang).style.display = 'block'
         document.getElementById(other).style.display = 'none'
         window.document.title = lang === 'en' ? "Shen Pengfei's resume" : '申鹏飞的简历'
-        document.querySelector('#select-lang ' + lang).classList.add('active')
-        document.querySelector('#select-lang ' + other).classList.remove('active')
+        document.querySelector('#select-lang .' + lang).classList.add('active')
+        document.querySelector('#select-lang .' + other).classList.remove('active')
       }
       ;(function () {
         if (location.hash === '#ZH') {
