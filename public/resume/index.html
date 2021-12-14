@@ -1,279 +1,392 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="theme-color" content="#888888" />
+    <title>Pengfei Shen -resume</title>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="theme-color" content="#888888">
-  <title>Pengfei Shen -resume</title>
-
-  <style>
-    @font-face {
-      font-family: 'Fira Mono';
-      src: url('https://arthas.me/font/FiraMono-Regular.ttf');
-    }
-
-    body {
-      image-rendering: -moz-crisp-edges;
-      -ms-interpolation-mode: nearest-neighbor;
-      image-rendering: pixelated;
-      font-family: 'Fira Mono', sans-serif;
-      background: #888888;
-    }
-
-    @media (max-width: 576px) {
-      .main {
-        margin: 24px 10px;
-        border: 20px solid transparent;
-        background: #FFF;
-        -webkit-background-clip: padding;
-        background-clip: padding-box;
-        border-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAABC0lEQVR4nO3b22qDQBhF4fUX3/+VJzelFZO2nprFzOx1L+x8KijEAhp9V1cPbq31Z1BVtNaoKriAsNw3yekT4fQZ7B4AvhA4eiVXFR//tOntrW6HQw0DAOcQhgKA4wjDAcAxhCEBYD/CsACwD2FoAPgbYXgA+B1hCgD4GWEaAHiNMBUAPCN0/S5w5tF3W7cAV17h13DT3QLbAmAPsAuAPcAuAPYAuwDYA+wCYA+wC4A9wC4A9gC7ANgD7AJgD7ALgD3ALgD2ALsA2APsAmAPsAuAPcAuAPYAuwDYA+wCYA+wC4A9wC4A9gC7ANgD7AJgD7CbHmCBe/513WsL3x8ed/kR9dXWp36+Xw88ALuDO4uBYOejAAAAAElFTkSuQmCC') 20 repeat;
-        border-image-width: 60px;
+    <style>
+      @font-face {
+        font-family: 'Fira Sans';
+        src: url('https://arthas.me/font/FiraSans-Regular.ttf');
       }
 
-      ul {
-        padding-left: 20px;
-      }
-    }
-
-    @media (min-width: 576px) {
-      .main {
-        margin: 24px 20px;
-        border: 60px solid transparent;
-        background: #FFF;
-        -webkit-background-clip: padding;
-        background-clip: padding-box;
-        border-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAABC0lEQVR4nO3b22qDQBhF4fUX3/+VJzelFZO2nprFzOx1L+x8KijEAhp9V1cPbq31Z1BVtNaoKriAsNw3yekT4fQZ7B4AvhA4eiVXFR//tOntrW6HQw0DAOcQhgKA4wjDAcAxhCEBYD/CsACwD2FoAPgbYXgA+B1hCgD4GWEaAHiNMBUAPCN0/S5w5tF3W7cAV17h13DT3QLbAmAPsAuAPcAuAPYAuwDYA+wCYA+wC4A9wC4A9gC7ANgD7AJgD7ALgD3ALgD2ALsA2APsAmAPsAuAPcAuAPYAuwDYA+wCYA+wC4A9wC4A9gC7ANgD7AJgD7CbHmCBe/513WsL3x8ed/kR9dXWp36+Xw88ALuDO4uBYOejAAAAAElFTkSuQmCC') 20 repeat;
-        border-image-width: 60px;
-      }
-    }
-
-    @media (min-width: 960px) {
-      .main {
-        max-width: 766px;
-        margin: 24px auto;
-        border: 60px solid transparent;
-        background: #FFF;
-        -webkit-background-clip: padding;
-        background-clip: padding-box;
-        border-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAABC0lEQVR4nO3b22qDQBhF4fUX3/+VJzelFZO2nprFzOx1L+x8KijEAhp9V1cPbq31Z1BVtNaoKriAsNw3yekT4fQZ7B4AvhA4eiVXFR//tOntrW6HQw0DAOcQhgKA4wjDAcAxhCEBYD/CsACwD2FoAPgbYXgA+B1hCgD4GWEaAHiNMBUAPCN0/S5w5tF3W7cAV17h13DT3QLbAmAPsAuAPcAuAPYAuwDYA+wCYA+wC4A9wC4A9gC7ANgD7AJgD7ALgD3ALgD2ALsA2APsAmAPsAuAPcAuAPYAuwDYA+wCYA+wC4A9wC4A9gC7ANgD7AJgD7CbHmCBe/513WsL3x8ed/kR9dXWp36+Xw88ALuDO4uBYOejAAAAAElFTkSuQmCC') 20 repeat;
-        border-image-width: 60px;
-      }
-    }
-
-    #select-lang {
-      text-align: right;
-      padding: 0 20px;
-    }
-
-
-    section {
-      padding: 10px;
-      color: #444;
-    }
-
-    .profile li {
-      list-style-type: none
-    }
-
-    a {
-      color: #23213d;
-      text-decoration: none;
-    }
-
-    .header {
-      margin: 0 auto;
-      color: #23213d;
-      text-align: center;
-    }
-
-    .values {
-      color: #23213d;
-      font-weight: 600;
-      word-wrap: break-word;
-    }
-  </style>
-</head>
-
-<body>
-  <p id='select-lang'><a href="#EN" onclick="toggle('en')">English</a> | <a href="#ZH" onclick="toggle('zh')">中文</a></p>
-  <div class="main" id="en">
-    <section class="header">
-      <h2>Pengfei Shen</h2>
-    </section>
-    <section class="profile">
-      <h3>Profile</h3>
-      <ul>
-        <li>
-          <p>Phone Number: <span class="values">15503624843<span></p>
-        </li>
-        <li>
-          <p>Email: <span class="values"><a href="mailto:spf@arthas.me">spf@arthas.me</a></span></p>
-        </li>
-        <li>
-          <p>Website: <span class="values"><a href="https://arthas.me" target="_blank">https://arthas.me</a></span></p>
-        </li>
-        <li>
-          <p>Github: <span class="values"><a href="https://github.com/Deadalusmask" target="_blank">https://github.com/Deadalusmask</a></span></p>
-        </li>
-        <li>
-          <p>Birthday: <span class="values">1997/4</span></p>
-        </li>
-      </ul>
-    </section>
-    <section class="education">
-      <h3>Education</h3>
-      <ul>
-        <li>
-          <span class="values">Sep,2015 - Now Taiyuan University of Technology, B.Eng.</span>
-          <p>Software College, Software Engineering</p>
-        </li>
-      </ul>
-    </section>
-    <section class="skills">
-      <h3>Skills & Interests</h3>
-      <ul>
-        <li>
-          <span class="values">JavaScript</span>
-          <p>Proficient in ES6, WebGL and React.js;</p>
-        </li>
-        <li>
-          <span class="values">Python</span>
-          <p>Familiar with RESTful/GraphQL style API coding in Python, daily scripts writing, knowledge and experience
-            in
-            OpenCV and TensorFlow;</p>
-        </li>
-        <li>
-          <span class="values">PHP</span>
-          <p>Skilled in PHP serverside developing, familiar with backend developing with Laravel framework;</p>
-        </li>
-        <li>
-          <span class="values">Linux</span>
-          <p>Familiar with Debian / Archlinux server environment seting up and service deploying, raspberry pie based
-            smart home, Docker;</p>
-        </li>
-        <li>
-          <span class="values">Painting</span>
-          <p>Amateur in painting, learnt some sketch drawing basis, Familiar with modeling and rendering knowledges,
-            retro pixel art fan.</p>
-        </li>
-      </ul>
-    </section>
-    <section class="projects">
-      <h3>Projects</h3>
-      <ul>
-        <li>
-          <span class="values">ArGL</span>
-          <p>Personal WebGL helper library, implemented obj and gltf loader and various rendering effects.</p>
-        </li>
-        <li>
-          <span class="values">WBzz</span>
-          <p>A sina weibo crawl program with Vue.js frontend and Python Flask backend. It could get a weibo user's
-            friends circle infos</p>
-        </li>
-        <li>
-          <span class="values">太原理工大学学生处</span>
-          <p>Website for Student Office in TYUT，implemented features of main page management, section management,
-            article management and file-resource upload management. this project is using Laravel framework.</p>
-        </li>
-
-
-      </ul>
-    </section>
-  </div>
-  <div class="main" id="zh">
-    <section class="header">
-      <h2>申鹏飞</h2>
-    </section>
-    <section class="profile">
-      <h3>个人资料</h3>
-      <ul>
-        <li>
-          <p>联系电话： <span class="values">15503624843<span></p>
-        </li>
-        <li>
-          <p>电子邮箱： <span class="values"><a href="mailto:spf@arthas.me">spf@arthas.me</a></span></p>
-        </li>
-        <li>
-          <p>个人网站： <span class="values"><a href="https://arthas.me" target="_blank">https://arthas.me</a></span></p>
-        </li>
-        <li>
-          <p>Github： <span class="values"><a href="https://github.com/Deadalusmask" target="_blank">https://github.com/Deadalusmask</a></span></p>
-        </li>
-        <li>
-          <p>出生年月： <span class="values">1997/4</span></p>
-        </li>
-      </ul>
-    </section>
-    <section class="education">
-      <h3>教育背景</h3>
-      <ul>
-        <li>
-          <span class="values">2015年9月至今 太原理工大学</span>
-          <p>软件学院 软件工程专业</p>
-        </li>
-      </ul>
-    </section>
-    <section class="skills">
-      <h3>专业技能</h3>
-      <ul>
-        <li>
-          <span class="values">JavaScript</span>
-          <p>熟悉ES6，WebGL和React.js</p>
-        </li>
-        <li>
-          <span class="values">Python</span>
-          <p>熟悉使用Python开发RESTful/GraphQL格式的接口、日常脚本的编写、OpenCV、TensorFlow入门；</p>
-        </li>
-        <li>
-          <span class="values">PHP</span>
-          <p>熟悉PHP服务端开发，遵守PSR规范，熟练使用php流行框架Laravel进行web后台开发；</p>
-        </li>
-        <li>
-          <span class="values">Linux</span>
-          <p>熟悉 Debian / Archlinux 服务器的环境搭建和服务部署、树莓派；</p>
-        </li>
-        <li>
-          <span class="values">Painting</span>
-          <p>业余兴趣是美术，有一些素描基础，了解一些模型和渲染的知识，像素风爱好者。</p>
-        </li>
-      </ul>
-    </section>
-    <section class="projects">
-      <h3>项目经验</h3>
-      <ul>
-        <li>
-          <span class="values">ArGL</span>
-          <p>个人开发的WebGL帮助库, 实现了obj和gltf的模型文件加载以及多种渲染效果。</p>
-        </li>
-        <li>
-          <span class="values">WBzz</span>
-          <p>一个新浪微博的爬虫程序，可以爬取用户的朋友圈信息。前端使用Vue.js，后端使用Flask框架。</p>
-        </li>
-        <li>
-          <span class="values">太原理工大学学生处</span>
-          <p>太原理工大学学生处的工作网站，实现后台主页管理、栏目管理、文章管理、上传文件资源管理等功能，使用Laravel框架开发。</p>
-        </li>
-      </ul>
-    </section>
-  </div>
-  <script>
-    (function () {
-      document.getElementById('zh').style.display = 'none';
-    })()
-    function toggle(id) {
-      if (id == 'en') {
-        document.getElementById('en').style.display = 'block';
-        document.getElementById('zh').style.display = 'none';
-      } else {
-        document.getElementById('en').style.display = 'none';
-        document.getElementById('zh').style.display = 'block';
+      body {
+        image-rendering: -moz-crisp-edges;
+        -ms-interpolation-mode: nearest-neighbor;
+        image-rendering: pixelated;
+        font-family: 'Fira Sans', 'PingFang SC', 'Microsoft Yahei', sans-serif;
+        background: #888888;
       }
 
-    }
-  </script>
-</body>
+      @media (max-width: 576px) {
+        .main {
+          margin: 24px 10px;
+          border: 20px solid transparent;
+          background: #fff;
+          -webkit-background-clip: padding;
+          background-clip: padding-box;
+          border-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAABC0lEQVR4nO3b22qDQBhF4fUX3/+VJzelFZO2nprFzOx1L+x8KijEAhp9V1cPbq31Z1BVtNaoKriAsNw3yekT4fQZ7B4AvhA4eiVXFR//tOntrW6HQw0DAOcQhgKA4wjDAcAxhCEBYD/CsACwD2FoAPgbYXgA+B1hCgD4GWEaAHiNMBUAPCN0/S5w5tF3W7cAV17h13DT3QLbAmAPsAuAPcAuAPYAuwDYA+wCYA+wC4A9wC4A9gC7ANgD7AJgD7ALgD3ALgD2ALsA2APsAmAPsAuAPcAuAPYAuwDYA+wCYA+wC4A9wC4A9gC7ANgD7AJgD7CbHmCBe/513WsL3x8ed/kR9dXWp36+Xw88ALuDO4uBYOejAAAAAElFTkSuQmCC')
+            20 repeat;
+          border-image-width: 60px;
+        }
 
+        ul {
+          padding-left: 20px;
+        }
+      }
+
+      @media (min-width: 576px) {
+        .main {
+          margin: 24px 20px;
+          border: 60px solid transparent;
+          background: #fff;
+          -webkit-background-clip: padding;
+          background-clip: padding-box;
+          border-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAABC0lEQVR4nO3b22qDQBhF4fUX3/+VJzelFZO2nprFzOx1L+x8KijEAhp9V1cPbq31Z1BVtNaoKriAsNw3yekT4fQZ7B4AvhA4eiVXFR//tOntrW6HQw0DAOcQhgKA4wjDAcAxhCEBYD/CsACwD2FoAPgbYXgA+B1hCgD4GWEaAHiNMBUAPCN0/S5w5tF3W7cAV17h13DT3QLbAmAPsAuAPcAuAPYAuwDYA+wCYA+wC4A9wC4A9gC7ANgD7AJgD7ALgD3ALgD2ALsA2APsAmAPsAuAPcAuAPYAuwDYA+wCYA+wC4A9wC4A9gC7ANgD7AJgD7CbHmCBe/513WsL3x8ed/kR9dXWp36+Xw88ALuDO4uBYOejAAAAAElFTkSuQmCC')
+            20 repeat;
+          border-image-width: 60px;
+        }
+      }
+
+      @media (min-width: 960px) {
+        .main {
+          max-width: 766px;
+          margin: 24px auto;
+          border: 60px solid transparent;
+          background: #fff;
+          -webkit-background-clip: padding;
+          background-clip: padding-box;
+          border-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAABC0lEQVR4nO3b22qDQBhF4fUX3/+VJzelFZO2nprFzOx1L+x8KijEAhp9V1cPbq31Z1BVtNaoKriAsNw3yekT4fQZ7B4AvhA4eiVXFR//tOntrW6HQw0DAOcQhgKA4wjDAcAxhCEBYD/CsACwD2FoAPgbYXgA+B1hCgD4GWEaAHiNMBUAPCN0/S5w5tF3W7cAV17h13DT3QLbAmAPsAuAPcAuAPYAuwDYA+wCYA+wC4A9wC4A9gC7ANgD7AJgD7ALgD3ALgD2ALsA2APsAmAPsAuAPcAuAPYAuwDYA+wCYA+wC4A9wC4A9gC7ANgD7AJgD7CbHmCBe/513WsL3x8ed/kR9dXWp36+Xw88ALuDO4uBYOejAAAAAElFTkSuQmCC')
+            20 repeat;
+          border-image-width: 60px;
+        }
+      }
+
+      #select-lang {
+        text-align: right;
+        padding: 0 20px;
+      }
+
+      section {
+        padding: 10px;
+        color: #444;
+      }
+
+      .profile li {
+        list-style-type: none;
+      }
+
+      a {
+        color: #23213d;
+        /* text-decoration: none; */
+      }
+
+      .header {
+        margin: 0 auto;
+        color: #23213d;
+        text-align: center;
+      }
+
+      .values {
+        color: #23213d;
+        font-weight: 600;
+        word-wrap: break-word;
+      }
+    </style>
+  </head>
+
+  <body>
+    <p id="select-lang">
+      <a href="#EN" class="en" onclick="setLang('en')">English</a> |
+      <a href="#ZH" class="zh" onclick="setLang('zh')">中文</a>
+    </p>
+    <div class="main" id="en">
+      <section class="header">
+        <h2>Shen Pengfei</h2>
+      </section>
+      <section class="profile">
+        <h3>Profile</h3>
+        <ul>
+          <li>
+            <p>Phone Number: <span class="values">15503624843</span></p>
+          </li>
+          <li>
+            <p>
+              Email: <span class="values"><a href="mailto:spf@arthas.me">spf@arthas.me</a></span>
+            </p>
+          </li>
+          <li>
+            <p>
+              Website:
+              <span class="values"
+                ><a href="https://arthas.me" target="_blank">https://arthas.me</a></span
+              >
+            </p>
+          </li>
+          <li>
+            <p>
+              Github:
+              <span class="values"
+                ><a href="https://github.com/Deadalusmask" target="_blank"
+                  >https://github.com/Deadalusmask</a
+                ></span
+              >
+            </p>
+          </li>
+          <li>
+            <p>Birthday: <span class="values">1997/4</span></p>
+          </li>
+        </ul>
+      </section>
+      <section class="education">
+        <h3>Education</h3>
+        <ul>
+          <li>
+            <span class="values"
+              >Sep,2015 - July, 2019 Taiyuan University of Technology, B.Eng.</span
+            >
+            <p>Software College, Software Engineering</p>
+          </li>
+        </ul>
+      </section>
+      <section class="experience">
+        <h3>Work Experience</h3>
+        <ul>
+          <li>
+            <span class="values">Jan,2019 - Now Bilibili Technology Co.</span>
+            <p>Senior Software Engineer (Frontend)</p>
+          </li>
+        </ul>
+      </section>
+      <section class="skills">
+        <h3>Skills & Interests</h3>
+        <ul>
+          <li>
+            <span class="values">JavaScript</span>
+            <p>Proficient in Modern ES standard and frontend framework like React.js & Vue.js.</p>
+          </li>
+          <li>
+            <span class="values">Computer Graphics</span>
+            <p>
+              Familiar with graphics rendering pipeline, basic image processing and glTF file
+              format，interactive animation effects using WebGL & GLSL,
+              <a href="https://www.shadertoy.com/user/Arthas_me" target="_blank"
+                >user of Shadertoy</a
+              >.
+            </p>
+          </li>
+          <li>
+            <span class="values">Other Programming Languages</span>
+            <ul>
+              <li>
+                <p>
+                  Experience with Node.js, Python and PHP for mock services and simple idea
+                  validation;
+                </p>
+              </li>
+              <li>
+                <p>
+                  Learning Rust, trying to use rust and wgpu-rs to get started with desktop graphics
+                  application development;
+                </p>
+              </li>
+              <li>
+                <p>
+                  Interested in functional programming, learned Racket and some functional
+                  programming concepts.
+                </p>
+              </li>
+            </ul>
+          </li>
+
+          <li>
+            <span class="values">Linux</span>
+            <p>
+              Familiar with Archlinux / Debian server environment seting up and service deploying,
+              Raspberry Pi player
+            </p>
+          </li>
+          <li>
+            <span class="values">Painting</span>
+            <p>
+              Amateur in painting, learnt some sketch drawing basis, retro pixel art fan, familiar
+              with Blender and Aseprite.
+            </p>
+          </li>
+        </ul>
+      </section>
+      <section class="projects">
+        <h3>Projects</h3>
+        <ul>
+          <li>
+            <span class="values">bilibili website banner</span>
+            <p>
+              Implemented an interactive animation effect for Fall 2020 with designers，and
+              abstracted a general-banner-configuration tool from it. Designers can modify the
+              configuration, preview the effect in real time and save it for publishing in this
+              tool. Added and optimized the WebGL rendered particle system in subsequent iterations.
+            </p>
+          </li>
+          <li>
+            <span class="values">Node Editor</span>
+            <p>
+              To resolve the increasing complexity of bilibili activity-configuration-platform and
+              the banner-configuration tool, inspired by Blender's material editor, I have
+              independently implemented a node editor that supports user-created custom nodes.
+              Developers can define basic node types first, then users can construct node diagrams
+              to represent a complex data processing flow or configuration structure.
+            </p>
+          </li>
+          <li>
+            <span class="values">Performance optimization of bilibili video player page</span>
+            <p>
+              During the 2-month period from October to December 2020, I proposed and implemented
+              multiple feasible optimization points, and run AB tests in parallel. As a result, we
+              improved user experience in this page, the first meaningful paint time was reduced
+              from 1.3 seconds to less than 800 milliseconds.
+            </p>
+          </li>
+        </ul>
+      </section>
+    </div>
+    <div class="main" id="zh">
+      <section class="header">
+        <h2>申鹏飞</h2>
+      </section>
+      <section class="profile">
+        <h3>个人资料</h3>
+        <ul>
+          <li>
+            <p>联系电话： <span class="values">15503624843</span></p>
+          </li>
+          <li>
+            <p>
+              电子邮箱：
+              <span class="values"><a href="mailto:spf@arthas.me">spf@arthas.me</a></span>
+            </p>
+          </li>
+          <li>
+            <p>
+              个人网站：
+              <span class="values"
+                ><a href="https://arthas.me" target="_blank">https://arthas.me</a></span
+              >
+            </p>
+          </li>
+          <li>
+            <p>
+              Github：
+              <span class="values"
+                ><a href="https://github.com/Deadalusmask" target="_blank"
+                  >https://github.com/Deadalusmask</a
+                ></span
+              >
+            </p>
+          </li>
+          <li>
+            <p>出生年月： <span class="values">1997/4</span></p>
+          </li>
+        </ul>
+      </section>
+      <section class="education">
+        <h3>教育背景</h3>
+        <ul>
+          <li>
+            <span class="values">2015年9月至2019年7月 太原理工大学</span>
+            <p>软件学院 软件工程专业</p>
+          </li>
+        </ul>
+      </section>
+      <section class="experience">
+        <h3>工作经历</h3>
+        <ul>
+          <li>
+            <span class="values">2019年1月至今 哔哩哔哩科技有限公司</span>
+            <p>高级开发工程师（前端）</p>
+          </li>
+        </ul>
+      </section>
+      <section class="skills">
+        <h3>专业技能</h3>
+        <ul>
+          <li>
+            <span class="values">JavaScript</span>
+            <p>熟悉现代 ES 规范和前端开发框架 React.js & Vue.js。</p>
+          </li>
+          <li>
+            <span class="values">图形学</span>
+            <p>
+              熟悉图形渲染流程、基础图像处理、glTF模型文件格式，使用 WebGL & GLSL 实现交互动画效果，
+              <a href="https://www.shadertoy.com/user/Arthas_me" target="_blank">Shadertoy 用户</a
+              >。
+            </p>
+          </li>
+          <li>
+            <span class="values">其他编程语言</span>
+            <ul>
+              <li><p>有 Node.js、Python 和 PHP 使用经验，用于 mock 服务和简单验证想法；</p></li>
+              <li><p>正在学习 Rust，尝试用 rust 和 wgpu-rs 入门桌面图形应用开发；</p></li>
+              <li><p>对函数式编程感兴趣，学习了Racket和一些函数式编程的概念。</p></li>
+            </ul>
+          </li>
+          <li>
+            <span class="values">Linux</span>
+            <p>熟悉 Archlinux / Debian 服务器的环境搭建和服务部署、树莓派玩家。</p>
+          </li>
+          <li>
+            <span class="values">美术</span>
+            <p>业余兴趣是美术，有一些素描基础，像素风爱好者，了解 Blender 和 Aseprite。</p>
+          </li>
+        </ul>
+      </section>
+      <section class="projects">
+        <h3>项目经验</h3>
+        <ul>
+          <li>
+            <span class="values">哔哩哔哩 web 端版头</span>
+            <p>
+              与设计师合作完成了2020年秋季的动态版头效果，并从中抽象出一套通用的后台版头配置工具，
+              设计师可以在配置工具中修改配置、实时预览效果并保存发布。在后续迭代中添加并优化了 WebGL
+              渲染的粒子系统。
+            </p>
+          </li>
+          <li>
+            <span class="values">节点编辑器</span>
+            <p>
+              为了解决b站活动配置平台和版头配置工具的越来越复杂的问题，受 Blender
+              的材质编辑器启发，独立实现了一个支持用户创建自定义节点的节点编辑器。
+              接入方接入时定义好基础的节点类型，用户就可以通过构建节点图来表达一个复杂的数据处理流程或配置结构。
+            </p>
+          </li>
+          <li>
+            <span class="values">哔哩哔哩 web 端播放页性能优化</span>
+            <p>
+              在2020年10月到12月的2个月时间内，提出了多个可行的优化点，通过并行进行 AB
+              实验，优化了播放页的用户体验，将播放页首屏8分位时间从1.3秒降低到少于800毫秒。
+            </p>
+          </li>
+        </ul>
+      </section>
+    </div>
+    <script>
+      function setLang(lang) {
+        const other = lang === 'en' ? 'zh' : 'en'
+        document.getElementById(lang).style.display = 'block'
+        document.getElementById(other).style.display = 'none'
+        window.document.title = lang === 'en' ? "Shen Pengfei's resume" : '申鹏飞的简历'
+        document.querySelector('#select-lang ' + lang).classList.add('active')
+        document.querySelector('#select-lang ' + other).classList.remove('active')
+      }
+      ;(function () {
+        if (location.hash === '#ZH') {
+          setLang('zh')
+        } else {
+          setLang('en')
+        }
+      })()
+    </script>
+  </body>
 </html>
