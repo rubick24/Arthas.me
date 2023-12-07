@@ -1,0 +1,9 @@
+{
+  "cSpell.words": ["stylex"],
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": ["source.fixAll.eslint"],
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.tabSize": 2
+  }
+}

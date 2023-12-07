@@ -1,9 +1,15 @@
 import Image from 'next/image'
 
-export default function Home() {
-  return (
-    <main>
+import * as stylex from '@stylexjs/stylex'
 
-    </main>
-  )
+const styles = stylex.create({
+  base: {
+    fontSize: 32,
+    lineHeight: 1.5,
+    color: 'red'
+  }
+})
+
+export default function Home() {
+  return <div {...stylex.props(styles.base)}>123</div>
 }
