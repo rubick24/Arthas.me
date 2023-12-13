@@ -1,3 +1,5 @@
+const path = require('path')
+
 module.exports = {
   presets: ['next/babel'],
   plugins: [
@@ -7,9 +9,10 @@ module.exports = {
         dev: process.env.NODE_ENV === 'development',
         runtimeInjection: false,
         genConditionalClasses: true,
+        treeshakeCompensation: true,
         unstable_moduleResolution: {
           type: 'commonJS',
-          rootDir: __dirname
+          rootDir: path.join(__dirname, '../..')
         }
       }
     ]
