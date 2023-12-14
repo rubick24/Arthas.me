@@ -12,7 +12,7 @@ module.exports = {
         treeshakeCompensation: true,
         unstable_moduleResolution: {
           type: 'commonJS',
-          rootDir: path.join(__dirname, '../..')
+          rootDir: path.join(__dirname, './')
         }
       }
     ]

@@ -7,9 +7,19 @@ import rehypeKatex from 'rehype-katex'
 import rehypeRaw from 'rehype-raw'
 import remarkMath from 'remark-math'
 import * as stylex from '@stylexjs/stylex'
+import { Metadata } from 'next'
 
 export async function generateStaticParams() {
   return getPostSlugs()
+}
+
+type Props = { params: { slug: string; title: string; date: number } }
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const postData = await getPostBySlug(params.slug)
+  return {
+    title: postData.title
+  }
 }
 
 const styles = stylex.create({
@@ -18,7 +28,7 @@ const styles = stylex.create({
   }
 })
 
-export default async function Page({ params }: { params: { slug: string; title: string; date: number } }) {
+export default async function Page({ params }: Props) {
   const postData = await getPostBySlug(params.slug)
   const timeStr = (() => {
     const d = new Date(postData.date)
