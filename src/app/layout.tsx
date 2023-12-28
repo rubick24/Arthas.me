@@ -19,7 +19,8 @@ export const metadata: Metadata = {
 
 const styles = stylex.create({
   base: {
-    backgroundColor: colors.sage1
+    backgroundColor: colors.sage1,
+    color: colors.sage12
   }
 })
 

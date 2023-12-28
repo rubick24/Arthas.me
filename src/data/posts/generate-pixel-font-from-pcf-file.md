@@ -90,7 +90,7 @@ M0 0L0 200L100 200L100 400L200 400L200 600L300 600L300 800L400 800L400 600L500 6
 ```
 
 绘制为 svg：
-<svg viewBox="0 0 800 800" style="display: block;width: 200px;height: 200px;fill: var(--text-color);transform: scaleY(-1);margin: 0 auto;">
+<svg viewBox="0 0 800 800" style="display: block;width: 200px;height: 200px;fill: currentColor;transform: scaleY(-1);margin: 0 auto;">
 <path d="M0 0L0 200L100 200L100 400L200 400L200 600L300 600L300 800L400 800L400 600L500 600L500 400L600 400L600 200L700 200L700 0L600 0L600 200L100 200L100 0L0 0M200 300L500 300L500 400L400 400L400 600L300 600L300 400L200 400L200 300Z"/>
 </svg>
 
@@ -131,8 +131,8 @@ const font = new opentype.Font({
 生成的字体在 chrome 中的实际效果：
 ![generated font example](/img/generated-font.png)
 
-
 ## 项目代码
+
 [https://github.com/Deadalusmask/pcf2ttf](https://github.com/Deadalusmask/pcf2ttf)
 
 ## 相关文档

@@ -23,4 +23,4 @@ $$
 
 <a href="/">html in md</a>
 
-![图片](/favicon.png)
+![图片](/img/Avatar.png)

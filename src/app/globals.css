@@ -1,7 +1,21 @@
 * {
   box-sizing: border-box;
-  padding: 0;
+}
+body {
   margin: 0;
+}
+
+a {
+  color: inherit;
+}
+h1,
+h2,
+h3 {
+  margin-top: 24px;
+  margin-bottom: 16px;
+}
+h1 {
+  font-size: 32px;
 }
 
 :not(pre) > code {

@@ -1,0 +1,50 @@
+@font-face {
+  font-family:Zpix;
+  src:url(/font/Zpix.ttf);
+}
+
+body {
+  content: url(./Slime-button-2x1.png) url(./Slime-button-2x2.png) url(./Slime-button-2x3.png);
+  image-rendering: -moz-crisp-edges;
+  image-rendering: -o-crisp-edges;
+  image-rendering: -webkit-optimize-contrast;
+  -ms-interpolation-mode: nearest-neighbor;
+  image-rendering: pixelated;
+}
+
+.row {
+    display: flex;
+    height: 300px;
+}
+
+.cont {
+    margin: auto;
+}
+
+.slime {
+  font-family: Zpix,sans-serif !important;
+  font-size: 24px;
+  outline: none;
+  border: 15px solid transparent;
+  padding: 0 0 4px 0;
+  border-image: url(Slime-button-2x1.png) 15 stretch;
+  background: #82d8a2;
+  -webkit-background-clip: padding;
+  background-clip: padding-box;
+}
+
+.slime:hover {
+  border-image: url(Slime-button-2x2.png) 15 stretch;
+  background: #90deab;
+  -webkit-background-clip: padding;
+  background-clip: padding-box;
+}
+
+.slime:active {
+  padding: 4px 0 0 0;
+  border-image: url(Slime-button-2x3.png) 15 stretch;
+  background: #75be93;
+  -webkit-background-clip: padding;
+  background-clip: padding-box;
+}
+

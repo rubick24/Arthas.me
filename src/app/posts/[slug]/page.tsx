@@ -8,6 +8,7 @@ import rehypeRaw from 'rehype-raw'
 import remarkMath from 'remark-math'
 import * as stylex from '@stylexjs/stylex'
 import { Metadata } from 'next'
+import Link from 'next/link'
 
 export async function generateStaticParams() {
   return getPostSlugs()
@@ -24,7 +25,21 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 const styles = stylex.create({
   base: {
-    color: colors.sage12
+    color: colors.sage12,
+    margin: '0 auto',
+    maxWidth: 960,
+    padding: {
+      'default': 24,
+      '@media (min-width: 768px)': 32
+    }
+  },
+  title: {
+    fontSize: 32
+  },
+  time: {
+    fontSize: 16,
+    color: colors.sage11,
+    marginBottom: 16
   }
 })
 
@@ -36,8 +51,11 @@ export default async function Page({ params }: Props) {
   })()
   return (
     <article {...stylex.props(styles.base)}>
-      <h1>{postData.title}</h1>
-      <div>{timeStr}</div>
+      <h2>
+        <Link href="/">Arthas.me</Link> / <Link href="/posts">Posts</Link>
+      </h2>
+      <h1 {...stylex.props(styles.title)}>{postData.title}</h1>
+      <div {...stylex.props(styles.time)}>{timeStr}</div>
       <Markdown
         remarkPlugins={[remarkMath]}
         rehypePlugins={[rehypeKatex, rehypeRaw]}

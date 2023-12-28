@@ -3,6 +3,7 @@ const stylexPlugin = require('@stylexjs/nextjs-plugin')
 
 /** @type {import('next').NextConfig} */
 let nextConfig = {
+  output: 'export',
   pageExtensions: ['tsx', 'ts', 'jsx', 'js']
 }
 
