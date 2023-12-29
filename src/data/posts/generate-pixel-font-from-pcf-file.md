@@ -129,6 +129,7 @@ const font = new opentype.Font({
 在字符数过多时生成的字体文件会有错误，在 FontForge 中重新导出后正常，具体原因待排查。
 
 生成的字体在 chrome 中的实际效果：
+
 ![generated font example](/img/generated-font.png)
 
 ## 项目代码
