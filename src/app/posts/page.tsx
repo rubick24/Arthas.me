@@ -1,6 +1,6 @@
 import { getAllPosts } from '@/lib/api'
-import Link from 'next/link'
 import * as stylex from '@stylexjs/stylex'
+import Link from 'next/link'
 
 const styles = stylex.create({
   container: {

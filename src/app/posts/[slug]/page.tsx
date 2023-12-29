@@ -1,14 +1,15 @@
 import { getPostBySlug, getPostSlugs } from '@/lib/api'
-import { colors } from '../../../tokens.stylex'
+import * as stylex from '@stylexjs/stylex'
 import { Code } from 'bright'
 import 'katex/dist/katex.min.css'
+import { Metadata } from 'next'
+import Link from 'next/link'
 import Markdown from 'react-markdown'
 import rehypeKatex from 'rehype-katex'
 import rehypeRaw from 'rehype-raw'
 import remarkMath from 'remark-math'
-import * as stylex from '@stylexjs/stylex'
-import { Metadata } from 'next'
-import Link from 'next/link'
+import { colors } from '../../../tokens.stylex'
+import { openGraph, twitter } from '../../shared-metadata'
 
 export async function generateStaticParams() {
   return getPostSlugs()
@@ -19,7 +20,17 @@ type Props = { params: { slug: string; title: string; date: number } }
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const postData = await getPostBySlug(params.slug)
   return {
-    title: postData.title
+    title: postData.title,
+    openGraph: {
+      ...openGraph,
+      type: 'article',
+      authors: ['Rubick'],
+      publishedTime: new Date(postData.date).toISOString()
+    },
+    twitter: {
+      ...twitter,
+      title: postData.title
+    }
   }
 }
 

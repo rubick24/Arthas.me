@@ -1,4 +1,3 @@
-import { colors } from '../tokens.stylex'
 import * as stylex from '@stylexjs/stylex'
 import Link from 'next/link'
 

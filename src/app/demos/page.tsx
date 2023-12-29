@@ -1,6 +1,6 @@
 import { demosList } from '@/data/demos'
-import Link from 'next/link'
 import * as stylex from '@stylexjs/stylex'
+import Link from 'next/link'
 import { colors } from '../../tokens.stylex'
 
 const styles = stylex.create({
